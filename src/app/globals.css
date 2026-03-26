@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #030303;
+  --color-dark: #080808;
+  --color-dark-2: #0e0e0e;
+  --color-dark-3: #151515;
+  --color-dark-4: #1c1c1c;
+  --color-dark-5: #222222;
+  --color-red: #c41e3a;
+  --color-red-hover: #d92845;
+  --color-red-dim: rgba(196, 30, 58, 0.12);
+  --color-red-glow: rgba(196, 30, 58, 0.35);
+  --color-gold: #d4a017;
+  --color-gold-hover: #e8b830;
+  --color-gold-dim: rgba(212, 160, 23, 0.10);
+  --color-gray: #777777;
+  --color-gray-light: #aaaaaa;
+  --color-off-white: #f0f0f0;
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.06);
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-black);
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-black);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-red);
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: var(--color-red);
+    color: white;
+  }
+}
+
+/* Shared component utilities */
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-hover));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: var(--color-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-glass-border);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 40px var(--color-red-glow);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 40px var(--color-gold-dim);
+  }
+}
