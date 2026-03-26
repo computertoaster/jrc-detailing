@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import AnimatedSection from '@/components/AnimatedSection'
-import ChatForm from '@/components/ChatForm'
+import ContactForm from '@/components/ContactForm'
 import { CONTACT, OWNER } from '@/lib/constants'
 
 const faqs = [
@@ -157,7 +157,7 @@ export default function ContactContent() {
               <h2 className="mb-8 font-heading text-2xl font-bold text-white">
                 Send an Enquiry
               </h2>
-              <ChatForm />
+              <ContactForm />
             </AnimatedSection>
           </div>
         </div>
