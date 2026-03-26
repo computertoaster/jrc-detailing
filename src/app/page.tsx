@@ -29,7 +29,9 @@ const homeFaqs = [
 ]
 
 export const metadata = {
-  title: 'Premium Mobile Car Detailing | Victoria Point & Brisbane South',
+  title: 'Car Detailing Victoria Point | Mobile Detailing Brisbane South',
+  description:
+    'Professional mobile car detailing in Victoria Point, Redlands and Brisbane South. Ceramic coating, paint correction, interior detailing from $99. 7+ years experience. Call 0481 998 874.',
   alternates: {
     canonical: '/',
   },
@@ -90,13 +92,13 @@ export default function HomePage() {
                 drivers to prestige vehicles, every detail gets the same meticulous attention.
                 Specialising in{' '}
                 <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                  ceramic coating
+                  ceramic coating in Brisbane
                 </Link>,{' '}
                 <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
                   paint correction
                 </Link>, and{' '}
                 <Link href="/interior-detailing" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                  interior detailing
+                  interior car detailing
                 </Link>.
               </p>
               <p className="mb-8 text-base leading-relaxed text-white/60">
@@ -112,10 +114,10 @@ export default function HomePage() {
                   Learn More About Jesse
                 </Link>
                 <Link
-                  href="/book"
+                  href="/contact"
                   className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
                 >
-                  Book a Detail
+                  Get a Quote
                 </Link>
               </div>
             </AnimatedSection>
@@ -176,11 +178,11 @@ export default function HomePage() {
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
             {addons.map((addon, i) => (
               <AnimatedSection key={addon.name} delay={i * 0.08}>
-                <div className="rounded-lg border border-glass-border bg-dark-2 p-6 text-center transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
+                <div className="group rounded-lg border border-glass-border bg-dark-2 p-6 text-center transition-all duration-300 hover:border-blue/20 hover:-translate-y-1 hover:shadow-md hover:shadow-blue/5">
                   <h3 className="mb-3 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white">
                     {addon.name}
                   </h3>
-                  <p className="mb-2 font-heading text-2xl font-bold text-blue">
+                  <p className="mb-2 font-heading text-2xl font-bold text-blue transition-colors duration-300 group-hover:text-blue-hover">
                     <span className="text-base font-medium text-blue/70">$</span>
                     {addon.price}
                   </p>
@@ -253,9 +255,9 @@ export default function HomePage() {
                 ),
               },
             ].map((card, i) => (
-              <AnimatedSection key={card.title} delay={i * 0.1}>
-                <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 text-center transition-all duration-300 hover:border-blue/30 hover:-translate-y-1">
-                  <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 text-red transition-colors group-hover:bg-blue/10 group-hover:text-blue">
+              <AnimatedSection key={card.title} delay={i * 0.12} direction="left">
+                <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 text-center transition-all duration-300 hover:border-blue/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue/5">
+                  <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 text-red transition-all duration-300 group-hover:bg-blue/10 group-hover:text-blue group-hover:scale-110">
                     {card.icon}
                   </div>
                   <h3 className="mb-3 font-heading text-sm font-bold uppercase tracking-[1px] text-white">
@@ -318,17 +320,18 @@ export default function HomePage() {
                 stars: 5,
               },
             ].map((review, i) => (
-              <AnimatedSection key={i} delay={i * 0.1}>
-                <div className="rounded-lg border border-white/6 bg-dark-2 p-8 transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
+              <AnimatedSection key={i} delay={i * 0.12}>
+                <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 transition-all duration-300 hover:border-blue/20 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue/5">
                   {/* Stars */}
                   <div className="mb-4 flex gap-1">
                     {Array.from({ length: review.stars }).map((_, j) => (
-                      <span key={j} className="text-blue text-lg">&#9733;</span>
+                      <span key={j} className="text-blue text-lg transition-transform duration-300 group-hover:scale-110">&#9733;</span>
                     ))}
                   </div>
                   <p className="mb-6 text-base leading-relaxed text-white/60 italic">
                     &ldquo;{review.text}&rdquo;
                   </p>
+                  <div className="h-px w-8 bg-red/30 mb-4" />
                   <p className="font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/30">
                     Verified Customer
                   </p>
@@ -408,6 +411,7 @@ export default function HomePage() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)' }} />
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-6">
@@ -472,10 +476,10 @@ export default function HomePage() {
                 Learn About Ceramic Coating
               </Link>
               <Link
-                href="/book"
+                href="/contact"
                 className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Book Now
+                Get a Quote
               </Link>
             </div>
           </AnimatedSection>
@@ -498,13 +502,12 @@ export default function HomePage() {
             </p>
           </AnimatedSection>
 
-          <AnimatedSection>
-            <div className="flex flex-wrap justify-center gap-3">
-              {areas.map((area) => (
+          <div className="flex flex-wrap justify-center gap-3">
+            {areas.map((area, i) => (
+              <AnimatedSection key={area.slug} delay={i * 0.04}>
                 <Link
-                  key={area.slug}
                   href={`/areas/${area.slug}`}
-                  className={`rounded-full px-5 py-2.5 font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] transition-all duration-300 ${
+                  className={`inline-block rounded-full px-5 py-2.5 font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] transition-all duration-300 ${
                     area.primary
                       ? 'bg-red text-white hover:bg-red-hover hover:shadow-lg hover:shadow-red/25'
                       : 'border border-white/12 text-white/50 hover:border-red/40 hover:text-white hover:bg-red/10'
@@ -512,9 +515,9 @@ export default function HomePage() {
                 >
                   {area.name}
                 </Link>
-              ))}
-            </div>
-          </AnimatedSection>
+              </AnimatedSection>
+            ))}
+          </div>
 
           <AnimatedSection className="mt-12 text-center">
             <Link
@@ -567,17 +570,17 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Get a Free Quote
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href={CONTACT.phoneHref}
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Get a Quote
-              </Link>
+                Call {OWNER.firstName}
+              </a>
             </div>
           </AnimatedSection>
         </div>

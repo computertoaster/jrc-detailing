@@ -7,14 +7,14 @@ import { CONTACT, OWNER } from '@/lib/constants'
 import { polishingImage } from '@/lib/data'
 
 export const metadata = {
-  title: 'Paint Correction',
+  title: 'Paint Correction Brisbane | Car Polishing from $320',
   description:
-    'Professional paint correction in Victoria Point, Redlands & Brisbane South. Machine polishing to remove swirl marks, scratches, and oxidation. From $320. JRC Detailing.',
+    'Professional paint correction and car polishing in Brisbane South and Victoria Point. Machine polishing removes swirl marks, scratches and oxidation. From $320. Mobile service.',
   alternates: { canonical: '/paint-correction' },
   openGraph: {
     title: 'Paint Correction Brisbane | Swirl Mark Removal | JRC Detailing',
     description:
-      'Professional paint correction and machine polishing in Victoria Point & Brisbane South. Remove swirl marks, scratches, oxidation. From $320.',
+      'Professional paint correction and machine polishing in Victoria Point and Brisbane South. Remove swirl marks, scratches, oxidation. From $320.',
   },
 }
 
@@ -446,26 +446,29 @@ export default function PaintCorrectionPage() {
               right level of correction for your vehicle. Want to follow up with long-term
               protection? Ask about{' '}
               <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                ceramic coating
+                ceramic coating in Brisbane
               </Link>{' '}
               after correction. View all{' '}
               <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                services and pricing
+                mobile detailing services and pricing
+              </Link>. Mobile service across{' '}
+              <Link href="/areas" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Victoria Point, Redlands, and Brisbane South
               </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Request a Quote
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="tel:0481998874"
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Get a Quote
-              </Link>
+                Call 0481 998 874
+              </a>
             </div>
           </AnimatedSection>
         </div>

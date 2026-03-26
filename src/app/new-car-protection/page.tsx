@@ -5,14 +5,14 @@ import { breadcrumbSchema, faqSchema } from '@/lib/seo'
 import { CONTACT, OWNER, DEALER_BRANDS } from '@/lib/constants'
 
 export const metadata = {
-  title: 'New Car Protection',
+  title: 'New Car Paint Protection Brisbane | Ceramic Coating',
   description:
-    'Protect your new car from day one with professional ceramic coating in Victoria Point & Brisbane South. Better quality and value than dealership paint protection. JRC Detailing.',
+    'Protect your new car from day one with professional ceramic coating in Brisbane South and Victoria Point. Better quality and value than dealership paint protection. Free quote.',
   alternates: { canonical: '/new-car-protection' },
   openGraph: {
-    title: 'New Car Protection Brisbane | Ceramic Coating for New Vehicles | JRC Detailing',
+    title: 'New Car Paint Protection Brisbane | Ceramic Coating | JRC Detailing',
     description:
-      'Professional new car protection in Victoria Point & Brisbane South. Ceramic coating that outperforms dealership paint protection at a better price.',
+      'Professional new car protection in Victoria Point and Brisbane South. Ceramic coating that outperforms dealership paint protection at a better price.',
   },
 }
 
@@ -376,26 +376,29 @@ export default function NewCarProtectionPage() {
               Get in touch with {OWNER.firstName} to discuss protection options for your new
               vehicle. The sooner you protect it, the better the long-term results. View all{' '}
               <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                services and pricing
+                mobile detailing services and pricing
               </Link>{' '}
               or learn more about our{' '}
               <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
                 ceramic coating process
+              </Link>. Mobile service across{' '}
+              <Link href="/areas" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Victoria Point, Redlands, and Brisbane South
               </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Get a Free Quote
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="tel:0481998874"
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Get a Quote
-              </Link>
+                Call 0481 998 874
+              </a>
             </div>
           </AnimatedSection>
         </div>

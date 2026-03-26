@@ -5,9 +5,9 @@ import { breadcrumbSchema } from '@/lib/seo'
 import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Service Areas',
+  title: 'Mobile Car Detailing Redlands | Service Areas',
   description:
-    'Mobile car detailing across Victoria Point, Redlands, Bayside & Brisbane South. See all suburbs serviced by JRC Detailing.',
+    'Mobile car detailing across Victoria Point, Redlands, Bayside and Brisbane South. See all suburbs serviced by JRC Detailing. We come to you.',
   alternates: {
     canonical: '/areas',
   },

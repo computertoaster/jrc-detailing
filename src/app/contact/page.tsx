@@ -23,9 +23,9 @@ const contactFaqs = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Get a Car Detailing Quote | Contact JRC Detailing',
   description:
-    'Get in touch with JRC Detailing. Call, text, email, or use our contact form. Mobile car detailing across Victoria Point, Redlands & Brisbane South.',
+    'Request a free car detailing quote from JRC Detailing. Call, text, email, or use our contact form. Mobile service across Victoria Point, Redlands and Brisbane South.',
   alternates: {
     canonical: '/contact',
   },

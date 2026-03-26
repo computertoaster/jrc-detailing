@@ -7,16 +7,16 @@ import { CONTACT, OWNER, SITE_URL } from '@/lib/constants'
 import { breadcrumbSchema, serviceSchema, faqSchema } from '@/lib/seo'
 
 export const metadata = {
-  title: 'Services & Pricing',
+  title: 'Car Detailing Prices Brisbane | Mobile Packages from $99',
   description:
-    'Professional car detailing packages from $99. Mini detail $99, interior detail $189, full cut and polish $320, full detail $370, prestige detail $550, ceramic coating custom quote. Mobile service across Victoria Point, Redlands and Brisbane South.',
+    'Car detailing prices and packages in Brisbane South from $99. Mini detail, interior detail, full detail, prestige detail, ceramic coating. Mobile service across Victoria Point and Redlands.',
   alternates: {
     canonical: '/services',
   },
   openGraph: {
-    title: 'Services & Pricing | JRC Detailing',
+    title: 'Car Detailing Prices Brisbane | Mobile Packages | JRC Detailing',
     description:
-      'Professional car detailing packages from $99. Mini detail, full detail, prestige detail, ceramic coating, paint correction. Mobile service across Victoria Point, Redlands & Brisbane South.',
+      'Professional mobile detailing packages from $99. Mini detail, full detail, prestige detail, ceramic coating, paint correction. Victoria Point, Redlands and Brisbane South.',
   },
 }
 
@@ -79,21 +79,24 @@ export default function ServicesPage() {
               What We Offer
             </p>
             <h1 className="mb-6 font-heading text-5xl font-extrabold md:text-6xl">
-              Services &amp; Pricing
+              Mobile Detailing Services &amp; Pricing
             </h1>
             <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-light">
-              Professional mobile detailing across the Redlands, Bayside, and Brisbane South.
+              Professional mobile detailing across the{' '}
+              <Link href="/areas" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Redlands, Bayside, and Brisbane South
+              </Link>.
               Every package is delivered at your door by {OWNER.firstName}, with {OWNER.experience}{' '}
               years of experience and dealership-grade products. Looking for something specific?
               Check out our dedicated{' '}
               <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                ceramic coating
+                ceramic coating in Brisbane
               </Link>,{' '}
               <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                paint correction
+                paint correction specialists
               </Link>, and{' '}
               <Link href="/interior-detailing" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                interior detailing
+                interior car detailing
               </Link>{' '}
               pages.
             </p>
@@ -272,7 +275,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <AnimatedSection>
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
-              Ready to Book?
+              Ready for a Quote?
             </p>
             <h2 className="mb-6 font-heading text-4xl font-extrabold md:text-5xl">
               Get Your Vehicle Detailed
@@ -281,22 +284,26 @@ export default function ServicesPage() {
               Send through your vehicle details and {OWNER.firstName} will get back to you with
               a tailored quote. Same-week bookings usually available. Have questions? Check the{' '}
               <Link href="/faq" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                FAQ
+                car detailing FAQ
+              </Link>{' '}
+              or learn more{' '}
+              <Link href="/about" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                about Jesse and JRC Detailing
               </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Request a Quote
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="tel:0481998874"
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Get a Quote
-              </Link>
+                Call 0481 998 874
+              </a>
             </div>
           </AnimatedSection>
         </div>

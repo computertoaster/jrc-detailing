@@ -35,7 +35,7 @@ export default function AboutContent() {
         <div className="mx-auto max-w-6xl px-6 text-center">
           <AnimatedSection>
             <h1 className="mb-4 font-heading text-4xl font-bold text-white md:text-6xl">
-              About JRC Detailing
+              About JRC Detailing, Victoria Point
             </h1>
             <p className="mx-auto max-w-xl text-base text-gray-light md:text-lg">
               7+ years of precision, quality, and passion.
@@ -89,6 +89,12 @@ export default function AboutContent() {
                   including{' '}
                   <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
                     ceramic coating
+                  </Link>,{' '}
+                  <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                    paint correction
+                  </Link>, and{' '}
+                  <Link href="/interior-detailing" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                    interior detailing
                   </Link>.
                 </p>
               </div>
@@ -165,15 +171,18 @@ export default function AboutContent() {
               Ready to experience the difference?
             </h2>
             <p className="mb-8 text-gray-light">
-              Book your detail with Jesse and see why customers across Brisbane South keep
-              coming back.
+              Get a quote from Jesse and see why customers across Brisbane South keep
+              coming back. Servicing{' '}
+              <Link href="/areas" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Victoria Point, Redlands, and Brisbane South
+              </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="inline-block rounded-lg bg-red px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Get a Quote
               </Link>
               <Link
                 href="/services"

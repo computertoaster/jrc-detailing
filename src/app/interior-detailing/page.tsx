@@ -5,14 +5,14 @@ import { breadcrumbSchema, faqSchema } from '@/lib/seo'
 import { CONTACT, OWNER } from '@/lib/constants'
 
 export const metadata = {
-  title: 'Interior Detailing',
+  title: 'Interior Car Detailing Brisbane | Steam Clean from $189',
   description:
-    'Professional interior car detailing in Victoria Point, Redlands & Brisbane South. Steam cleaning, leather care, odour removal, pet hair removal. From $189. JRC Detailing.',
+    'Professional interior car detailing in Brisbane South and Victoria Point. Steam cleaning, leather care, odour removal, pet hair extraction. From $189. Mobile service across Redlands.',
   alternates: { canonical: '/interior-detailing' },
   openGraph: {
     title: 'Interior Car Detailing Brisbane | Steam Clean | JRC Detailing',
     description:
-      'Professional interior detailing in Victoria Point & Brisbane South. Steam clean seats, carpets, leather care, odour removal. From $189.',
+      'Professional interior detailing in Victoria Point and Brisbane South. Steam clean seats, carpets, leather care, odour removal. From $189.',
   },
 }
 
@@ -345,23 +345,30 @@ export default function InteriorDetailingPage() {
               Whether it is a quick refresh or a deep clean for a neglected cabin, {OWNER.firstName}{' '}
               will bring it back to life. View all{' '}
               <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                services and packages
+                mobile detailing services and packages
               </Link>{' '}
-              or book your interior detail today.
+              or pair your interior clean with a{' '}
+              <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                paint correction
+              </Link>{' '}
+              for a complete transformation. Servicing{' '}
+              <Link href="/areas" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Victoria Point, Redlands, and Brisbane South
+              </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Request a Quote
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="tel:0481998874"
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Get a Quote
-              </Link>
+                Call 0481 998 874
+              </a>
             </div>
           </AnimatedSection>
         </div>

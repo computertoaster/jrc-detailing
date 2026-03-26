@@ -246,33 +246,36 @@ export default function FAQPage() {
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Get a Free Quote
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="tel:0481998874"
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Contact Form
-              </Link>
+                Call 0481 998 874
+              </a>
             </div>
 
             {/* Related Pages */}
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
               <span className="text-sm text-white/30">Learn more:</span>
               <Link href="/ceramic-coating" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                Ceramic Coating
+                Ceramic Coating Brisbane
               </Link>
               <Link href="/paint-correction" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
                 Paint Correction
               </Link>
               <Link href="/interior-detailing" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                Interior Detailing
+                Interior Car Detailing
               </Link>
               <Link href="/new-car-protection" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                New Car Protection
+                New Car Paint Protection
+              </Link>
+              <Link href="/areas" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Service Areas
               </Link>
             </div>
           </AnimatedSection>

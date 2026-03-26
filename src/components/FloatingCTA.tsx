@@ -6,9 +6,9 @@ import { CONTACT } from '@/lib/constants'
 export default function FloatingCTA() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 2, duration: 0.5 }}
+      initial={{ opacity: 0, y: 60, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ delay: 2.5, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3"
     >
       {/* Instagram */}
@@ -16,8 +16,8 @@ export default function FloatingCTA() {
         href={CONTACT.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.15 }}
+        whileTap={{ scale: 0.9 }}
         className="flex h-12 w-12 items-center justify-center rounded-full bg-dark-3/90 backdrop-blur-xl border border-white/10 text-white/70 transition-colors hover:text-white hover:border-white/20"
         aria-label="Follow JRC Detailing on Instagram"
         title="Follow on Instagram"
@@ -32,8 +32,12 @@ export default function FloatingCTA() {
       {/* Phone */}
       <motion.a
         href={CONTACT.phoneHref}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.15 }}
+        whileTap={{ scale: 0.9 }}
+        animate={{ y: [0, -4, 0] }}
+        transition={{
+          y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
+        }}
         className="flex h-14 w-14 items-center justify-center rounded-full bg-red text-white shadow-lg shadow-red/30 animate-pulse-slow"
         aria-label="Call JRC Detailing"
         title="Call JRC Detailing"

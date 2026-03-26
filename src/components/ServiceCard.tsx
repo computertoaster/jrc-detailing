@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import type { Service } from '@/lib/data'
 
 interface ServiceCardProps {
@@ -10,11 +13,18 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
   return (
     <Link href={`/services#${service.slug}`} className="group block">
-      <div
-        className={`relative overflow-hidden rounded-lg border bg-dark-2 p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl ${
+      <motion.div
+        whileHover={{
+          y: -6,
+          rotateX: 2,
+          rotateY: -1,
+          transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] },
+        }}
+        style={{ transformPerspective: 800 }}
+        className={`relative overflow-hidden rounded-lg border bg-dark-2 p-6 transition-all duration-500 hover:shadow-xl ${
           service.featured
-            ? 'border-red/30 hover:shadow-red/10'
-            : 'border-white/6 hover:border-white/12 hover:shadow-white/5'
+            ? 'border-red/30 hover:shadow-red/15'
+            : 'border-white/6 hover:border-blue/25 hover:shadow-blue/10'
         }`}
       >
         {/* Red top-line glow on hover */}
@@ -23,7 +33,9 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             service.featured ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
           }`}
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(196,30,58,0.6), transparent)',
+            background: service.featured
+              ? 'linear-gradient(90deg, transparent, rgba(196,30,58,0.6), transparent)'
+              : 'linear-gradient(90deg, transparent, rgba(37,99,235,0.5), transparent)',
           }}
         />
 
@@ -54,19 +66,19 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         {/* Price */}
         <div className="mb-4">
           {hasPrice ? (
-            <span className="font-heading text-3xl font-bold text-blue">
+            <span className="font-heading text-3xl font-bold text-blue transition-all duration-300 group-hover:text-blue-hover">
               <span className="text-lg font-medium text-blue/70">$</span>
               {service.price}
             </span>
           ) : (
-            <span className="font-heading text-lg font-semibold text-blue">
+            <span className="font-heading text-lg font-semibold text-blue transition-colors duration-300 group-hover:text-blue-hover">
               {service.priceLabel || 'Custom Quote'}
             </span>
           )}
         </div>
 
         {/* Red divider */}
-        <div className="mb-4 h-0.5 w-10 bg-red/40" />
+        <div className="mb-4 h-0.5 w-10 bg-red/40 transition-all duration-500 group-hover:w-16 group-hover:bg-red/70" />
 
         {/* Short description */}
         <p className="mb-5 text-sm sm:text-base leading-relaxed text-white/40">
@@ -105,7 +117,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </div>
-      </div>
+      </motion.div>
     </Link>
   )
 }

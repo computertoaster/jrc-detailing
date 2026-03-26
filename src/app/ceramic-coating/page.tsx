@@ -7,16 +7,16 @@ import { CONTACT, OWNER, DEALER_BRANDS, SITE_URL } from '@/lib/constants'
 import { breadcrumbSchema, serviceSchema, faqSchema, howToSchema } from '@/lib/seo'
 
 export const metadata = {
-  title: 'Ceramic Coating',
+  title: 'Ceramic Coating Brisbane | Paint Protection Specialists',
   description:
-    'Professional ceramic coating in Victoria Point & Brisbane South. Multi-year paint protection with full paint correction. Dealership trusted. Hydrophobic, UV resistant, showroom gloss. Call for a custom quote.',
+    'Professional ceramic coating in Brisbane South and Victoria Point. Multi-year paint protection with full paint correction included. Hydrophobic, UV resistant, showroom gloss. Free quote.',
   alternates: {
     canonical: '/ceramic-coating',
   },
   openGraph: {
     title: 'Ceramic Coating Brisbane | Paint Protection | JRC Detailing',
     description:
-      'Professional ceramic coating in Victoria Point & Brisbane South. Multi-year paint protection with full paint correction included. Trusted by BMW, Mercedes & major dealerships.',
+      'Professional ceramic coating in Victoria Point and Brisbane South. Multi-year paint protection with full paint correction included. Trusted by BMW, Mercedes and major dealerships.',
   },
 }
 
@@ -212,7 +212,10 @@ export default function CeramicCoatingPage() {
                 fully corrected paintwork
               </Link>{' '}
               by {OWNER.firstName}, with {OWNER.experience}{' '}
-              years of hands-on experience.
+              years of hands-on experience. Mobile service across{' '}
+              <Link href="/areas" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Victoria Point, Redlands, and Brisbane South
+              </Link>.
             </p>
           </AnimatedSection>
         </div>
@@ -407,10 +410,10 @@ export default function CeramicCoatingPage() {
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
-                  href="/book"
+                  href="/contact"
                   className="rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25"
                 >
-                  Book Online
+                  Request a Quote
                 </Link>
                 <Link
                   href="/contact"
@@ -463,22 +466,25 @@ export default function CeramicCoatingPage() {
               quote tailored to your vehicle, its condition, and the level of protection you need.
               View all{' '}
               <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                services and pricing
+                mobile detailing services and pricing
+              </Link>. Have questions? Read the{' '}
+              <Link href="/faq" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating FAQ
               </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Get a Free Quote
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="tel:0481998874"
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Contact Form
-              </Link>
+                Call 0481 998 874
+              </a>
             </div>
           </AnimatedSection>
         </div>

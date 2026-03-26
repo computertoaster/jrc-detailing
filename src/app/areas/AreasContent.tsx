@@ -25,7 +25,7 @@ export default function AreasContent() {
         <div className="mx-auto max-w-6xl px-6 text-center">
           <AnimatedSection>
             <h1 className="mb-4 font-heading text-4xl font-bold text-white md:text-6xl">
-              Service Areas
+              Mobile Car Detailing Service Areas
             </h1>
             <p className="mx-auto max-w-xl text-base text-gray-light md:text-lg">
               Mobile detailing across Brisbane South and the Redlands. Browse our{' '}
@@ -33,8 +33,8 @@ export default function AreasContent() {
                 services and pricing
               </Link>{' '}
               or{' '}
-              <Link href="/book" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                book online
+              <Link href="/contact" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                request a free quote
               </Link>.
             </p>
           </AnimatedSection>
@@ -110,18 +110,23 @@ export default function AreasContent() {
               If your suburb is listed above, Jesse can be at your door. If it&apos;s not
               listed, get in touch anyway; we may still be able to help. Check out our{' '}
               <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                ceramic coating
-              </Link>{' '}
-              and{' '}
+                ceramic coating in Brisbane
+              </Link>,{' '}
+              <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                paint correction
+              </Link>,{' '}
+              <Link href="/interior-detailing" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                interior car detailing
+              </Link>, and our{' '}
               <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                full service range
+                full service range and pricing
               </Link>.
             </p>
             <Link
-              href="/book"
+              href="/contact"
               className="inline-block rounded-lg bg-red px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
             >
-              Book Online
+              Get a Free Quote
             </Link>
           </AnimatedSection>
         </div>

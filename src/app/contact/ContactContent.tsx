@@ -35,18 +35,15 @@ export default function ContactContent() {
         <div className="mx-auto max-w-6xl px-6 text-center">
           <AnimatedSection>
             <h1 className="mb-4 font-heading text-4xl font-bold text-white md:text-6xl">
-              Get in Touch
+              Get a Car Detailing Quote
             </h1>
             <p className="mx-auto max-w-xl text-base text-gray-light md:text-lg">
               Ready for a showroom finish? {OWNER.firstName} personally handles every
-              enquiry. Prefer to{' '}
-              <Link href="/book" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                book online
-              </Link>? Browse our{' '}
+              enquiry. Browse our{' '}
               <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                services and pricing
+                mobile detailing services and pricing
               </Link>{' '}
-              first.
+              or send through your details below for a free quote.
             </p>
           </AnimatedSection>
         </div>
@@ -207,9 +204,27 @@ export default function ContactContent() {
                 href="/areas"
                 className="text-red transition-colors hover:text-white"
               >
-                areas page
+                mobile detailing service areas
               </Link>{' '}
-              for the full list of suburbs serviced.
+              for the full list of suburbs serviced. Looking for specific services? Check out{' '}
+              <Link
+                href="/ceramic-coating"
+                className="text-red transition-colors hover:text-white"
+              >
+                ceramic coating
+              </Link>,{' '}
+              <Link
+                href="/paint-correction"
+                className="text-red transition-colors hover:text-white"
+              >
+                paint correction
+              </Link>, or{' '}
+              <Link
+                href="/interior-detailing"
+                className="text-red transition-colors hover:text-white"
+              >
+                interior detailing
+              </Link>.
             </p>
           </AnimatedSection>
         </div>

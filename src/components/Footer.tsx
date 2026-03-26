@@ -16,7 +16,7 @@ const footerServiceLinks = [
   { href: '/interior-detailing', label: 'Interior Detailing' },
   { href: '/new-car-protection', label: 'New Car Protection' },
   { href: '/areas', label: 'Service Areas' },
-  { href: '/book', label: 'Book Now' },
+  { href: '/contact', label: 'Get a Quote' },
 ]
 
 export default function Footer() {

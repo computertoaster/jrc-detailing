@@ -209,25 +209,31 @@ export default async function SuburbPage({ params }: SuburbPageProps) {
         <div className="mx-auto max-w-3xl px-6 text-center">
           <AnimatedSection>
             <h2 className="mb-4 font-heading text-2xl font-bold text-white md:text-3xl">
-              Book your detail in {area.name}
+              Get a quote for mobile detailing in {area.name}
             </h2>
             <p className="mb-8 text-gray-light">
-              Ready for a showroom finish? Get in touch with {OWNER.firstName} to book your
-              mobile detail in {area.name}. Browse{' '}
+              Ready for a showroom finish? Get in touch with {OWNER.firstName} for a free quote on
+              mobile detailing in {area.name}. Browse{' '}
               <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
-                all services
+                all detailing services and pricing
               </Link>{' '}
               including{' '}
               <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
                 ceramic coating
+              </Link>,{' '}
+              <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                paint correction
+              </Link>, and{' '}
+              <Link href="/interior-detailing" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                interior car detailing
               </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/book"
+                href="/contact"
                 className="inline-block rounded-lg bg-red px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Online
+                Get a Free Quote
               </Link>
               <Link
                 href="/contact"

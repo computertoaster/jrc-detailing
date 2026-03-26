@@ -84,7 +84,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="preconnect" href="https://images.pexels.com" />
       </head>
-      <body className="bg-black font-body text-white antialiased">
+      <body className="bg-black font-body text-white antialiased noise-overlay">
         <a href="#main-content" className="skip-to-content">
           Skip to content
         </a>

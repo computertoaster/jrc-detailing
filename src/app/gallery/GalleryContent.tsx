@@ -1,13 +1,18 @@
 'use client'
 
+import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import AnimatedSection from '@/components/AnimatedSection'
 import { galleryImages } from '@/lib/data'
 import { CONTACT } from '@/lib/constants'
 
 export default function GalleryContent() {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+
+  const closeLightbox = useCallback(() => setSelectedImage(null), [])
+
   return (
     <>
       {/* Hero */}
@@ -37,15 +42,16 @@ export default function GalleryContent() {
                 <motion.div
                   whileHover="hovered"
                   initial="idle"
+                  onClick={() => setSelectedImage(i)}
                   className="group relative cursor-pointer overflow-hidden rounded-lg"
                 >
                   <motion.div
                     variants={{
-                      idle: { scale: 1 },
-                      hovered: { scale: 1.05 },
+                      idle: { scale: 1, rotate: 0 },
+                      hovered: { scale: 1.06, rotate: 0.5 },
                     }}
-                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                    className="relative aspect-[4/3]"
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                    className={`relative ${image.wide ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}
                   >
                     <Image
                       src={image.src}
@@ -57,6 +63,7 @@ export default function GalleryContent() {
                           : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw'
                       }
                       className="object-cover"
+                      loading="lazy"
                     />
                   </motion.div>
 
@@ -67,21 +74,24 @@ export default function GalleryContent() {
                       hovered: { opacity: 1 },
                     }}
                     transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-black/50"
+                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
                   />
 
-                  {/* Label slides up on hover */}
+                  {/* Label + expand icon slides up on hover */}
                   <motion.div
                     variants={{
                       idle: { opacity: 0, y: 20 },
                       hovered: { opacity: 1, y: 0 },
                     }}
                     transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                    className="absolute bottom-0 left-0 right-0 p-4"
+                    className="absolute bottom-0 left-0 right-0 flex items-center justify-between p-4"
                   >
                     <span className="font-heading text-sm font-bold uppercase tracking-wider text-white">
                       {image.label}
                     </span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-60">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
                   </motion.div>
                 </motion.div>
               </AnimatedSection>
@@ -89,6 +99,83 @@ export default function GalleryContent() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 sm:p-8"
+            onClick={closeLightbox}
+          >
+            {/* Close button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-6 right-6 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/80 backdrop-blur-sm transition-colors hover:bg-white/20 hover:text-white"
+              aria-label="Close gallery image"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+              className="relative max-h-[85vh] max-w-[90vw] overflow-hidden rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={galleryImages[selectedImage].src}
+                alt={galleryImages[selectedImage].alt}
+                width={1200}
+                height={800}
+                className="h-auto max-h-[85vh] w-auto rounded-lg object-contain"
+                sizes="90vw"
+                priority
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <p className="font-heading text-sm font-bold uppercase tracking-wider text-white">
+                  {galleryImages[selectedImage].label}
+                </p>
+                <p className="text-sm text-white/50">
+                  {galleryImages[selectedImage].alt}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Navigation arrows */}
+            {selectedImage > 0 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage - 1) }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+                aria-label="Previous image"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+              </button>
+            )}
+            {selectedImage < galleryImages.length - 1 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage + 1) }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+                aria-label="Next image"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Instagram CTA */}
       <section className="bg-black py-16 md:py-24">

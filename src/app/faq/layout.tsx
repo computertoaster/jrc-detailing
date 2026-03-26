@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions',
+  title: 'Car Detailing FAQ | Prices, Services and Process',
   description:
-    'Common questions about car detailing services, pricing, ceramic coating, and mobile detailing in Victoria Point, Redlands & Brisbane South. JRC Detailing FAQ.',
+    'How much does car detailing cost? Common questions about detailing prices, ceramic coating, paint correction, and mobile service in Victoria Point, Redlands and Brisbane South.',
   alternates: { canonical: '/faq' },
 }
 
