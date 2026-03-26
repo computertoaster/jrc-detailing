@@ -17,7 +17,7 @@ export default function TrustBar() {
           {DEALER_BRANDS.map((brand) => (
             <span
               key={brand}
-              className="font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-white/20 transition-colors duration-300 hover:text-gold"
+              className="font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-white/20 transition-colors duration-300 hover:text-blue"
             >
               {brand}
             </span>

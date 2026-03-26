@@ -34,7 +34,7 @@ const faqs = [
   {
     question: 'What products do you use?',
     answer:
-      'Professional-grade products only. Every compound, polish, coating, and protectant is hand-selected for quality and durability. No shortcuts, no cheap substitutes.',
+      'JRC Detailing uses professional-grade products from AutoSmart, Bowden\'s Own, Gyeon, and CarPro. These are trusted brands used by professional detailers and dealerships across Australia. No shortcuts, no cheap substitutes.',
   },
   {
     question: 'Can I combine services?',
@@ -146,12 +146,12 @@ export default function ServicesPage() {
                     {/* Right: Price */}
                     <div className="flex-shrink-0 text-right">
                       {service.price !== null ? (
-                        <span className="font-heading text-3xl font-bold text-gold">
-                          <span className="text-lg font-medium text-gold/70">$</span>
+                        <span className="font-heading text-3xl font-bold text-blue">
+                          <span className="text-lg font-medium text-blue/70">$</span>
                           {service.price}
                         </span>
                       ) : (
-                        <span className="font-heading text-xl font-semibold text-gold">
+                        <span className="font-heading text-xl font-semibold text-blue">
                           {service.priceLabel || 'Custom Quote'}
                         </span>
                       )}
@@ -215,8 +215,8 @@ export default function ServicesPage() {
                   <h3 className="mb-3 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white">
                     {addon.name}
                   </h3>
-                  <p className="mb-2 font-heading text-2xl font-bold text-gold">
-                    <span className="text-base font-medium text-gold/70">$</span>
+                  <p className="mb-2 font-heading text-2xl font-bold text-blue">
+                    <span className="text-base font-medium text-blue/70">$</span>
                     {addon.price}
                   </p>
                   <p className="text-[0.7rem] font-medium text-red/70">

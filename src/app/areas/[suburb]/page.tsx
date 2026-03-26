@@ -131,7 +131,7 @@ export default async function SuburbPage({ params }: SuburbPageProps) {
           <div className="grid gap-6 sm:grid-cols-3">
             <AnimatedSection delay={0}>
               <div className="rounded-xl border border-white/6 bg-dark-2/50 p-6 backdrop-blur-sm">
-                <h3 className="mb-3 font-heading text-lg font-bold text-gold">
+                <h3 className="mb-3 font-heading text-lg font-bold text-blue">
                   Mobile Convenience
                 </h3>
                 <p className="text-sm text-gray-light">
@@ -144,7 +144,7 @@ export default async function SuburbPage({ params }: SuburbPageProps) {
 
             <AnimatedSection delay={0.1}>
               <div className="rounded-xl border border-white/6 bg-dark-2/50 p-6 backdrop-blur-sm">
-                <h3 className="mb-3 font-heading text-lg font-bold text-gold">
+                <h3 className="mb-3 font-heading text-lg font-bold text-blue">
                   7+ Years Experience
                 </h3>
                 <p className="text-sm text-gray-light">
@@ -157,7 +157,7 @@ export default async function SuburbPage({ params }: SuburbPageProps) {
 
             <AnimatedSection delay={0.2}>
               <div className="rounded-xl border border-white/6 bg-dark-2/50 p-6 backdrop-blur-sm">
-                <h3 className="mb-3 font-heading text-lg font-bold text-gold">
+                <h3 className="mb-3 font-heading text-lg font-bold text-blue">
                   Dealership Trusted
                 </h3>
                 <p className="text-sm text-gray-light">

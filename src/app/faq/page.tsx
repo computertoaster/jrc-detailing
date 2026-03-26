@@ -92,7 +92,7 @@ const faqSections = [
       {
         question: 'What products do you use?',
         answer:
-          'JRC Detailing uses professional-grade products only. This includes specialised machine polishing compounds, professional ceramic coatings, pH-neutral wash solutions, and dedicated interior and leather care products. Jesse selects products based on the specific needs of each vehicle.',
+          'JRC Detailing uses professional-grade products from AutoSmart, Bowden\'s Own, Gyeon, and CarPro. These are trusted brands used by professional detailers and dealerships across Australia. Jesse selects products based on the specific needs of each vehicle.',
       },
       {
         question: 'Can I wash my car after ceramic coating?',

@@ -346,30 +346,30 @@ export default function PaintCorrectionPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
-              <div className="rounded-lg border border-gold/20 bg-dark-2 p-8 transition-colors hover:border-gold/30">
-                <div className="mb-2 inline-block rounded-full bg-gold/10 px-3 py-1 font-heading text-[0.6rem] font-bold uppercase tracking-[2px] text-gold">
+              <div className="rounded-lg border border-blue/20 bg-dark-2 p-8 transition-colors hover:border-blue/30">
+                <div className="mb-2 inline-block rounded-full bg-blue/10 px-3 py-1 font-heading text-[0.6rem] font-bold uppercase tracking-[2px] text-blue">
                   Best Value
                 </div>
                 <h3 className="mb-2 font-heading text-xl font-bold text-white">Prestige Detail</h3>
-                <p className="mb-4 font-heading text-3xl font-extrabold text-gold">$550</p>
+                <p className="mb-4 font-heading text-3xl font-extrabold text-blue">$550</p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
-                    <span className="text-gold">&#10003;</span> Everything in Cut &amp; Polish
+                    <span className="text-blue">&#10003;</span> Everything in Cut &amp; Polish
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-gold">&#10003;</span> Full interior detail
+                    <span className="text-blue">&#10003;</span> Full interior detail
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-gold">&#10003;</span> Engine bay cleaning
+                    <span className="text-blue">&#10003;</span> Engine bay cleaning
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-gold">&#10003;</span> Headlight restoration
+                    <span className="text-blue">&#10003;</span> Headlight restoration
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-gold">&#10003;</span> Black plastics restoration
+                    <span className="text-blue">&#10003;</span> Black plastics restoration
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-gold">&#10003;</span> 2-stage cut &amp; polish + wax
+                    <span className="text-blue">&#10003;</span> 2-stage cut &amp; polish + wax
                   </li>
                 </ul>
               </div>

@@ -54,12 +54,12 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         {/* Price */}
         <div className="mb-4">
           {hasPrice ? (
-            <span className="font-heading text-2xl font-bold text-gold">
-              <span className="text-base font-medium text-gold/70">$</span>
+            <span className="font-heading text-2xl font-bold text-blue">
+              <span className="text-base font-medium text-blue/70">$</span>
               {service.price}
             </span>
           ) : (
-            <span className="font-heading text-lg font-semibold text-gold">
+            <span className="font-heading text-lg font-semibold text-blue">
               {service.priceLabel || 'Custom Quote'}
             </span>
           )}

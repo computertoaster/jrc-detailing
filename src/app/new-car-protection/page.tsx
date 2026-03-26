@@ -324,7 +324,7 @@ export default function NewCarProtectionPage() {
               {DEALER_BRANDS.map((brand) => (
                 <span
                   key={brand}
-                  className="rounded-full border border-white/10 bg-dark-2 px-5 py-2 font-heading text-[0.6rem] font-bold uppercase tracking-[3px] text-white/40 transition-colors hover:text-gold hover:border-gold/30"
+                  className="rounded-full border border-white/10 bg-dark-2 px-5 py-2 font-heading text-[0.6rem] font-bold uppercase tracking-[3px] text-white/40 transition-colors hover:text-blue hover:border-blue/30"
                 >
                   {brand}
                 </span>

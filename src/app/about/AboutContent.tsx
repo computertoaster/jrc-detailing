@@ -15,7 +15,7 @@ const values = [
   },
   {
     title: 'Quality Products',
-    description: 'Professional-grade coatings, polishes, and chemicals only.',
+    description: 'Professional-grade products from trusted brands including Gyeon, CarPro, AutoSmart, and Bowden\'s Own.',
   },
   {
     title: 'Mobile Convenience',
@@ -64,7 +64,7 @@ export default function AboutContent() {
 
             {/* Text */}
             <AnimatedSection direction="right">
-              <h2 className="mb-6 font-heading text-2xl font-bold text-gold md:text-3xl">
+              <h2 className="mb-6 font-heading text-2xl font-bold text-blue md:text-3xl">
                 Meet Jesse Curtain
               </h2>
               <div className="space-y-4 text-gray-light">

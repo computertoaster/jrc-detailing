@@ -43,7 +43,7 @@ export default function AreasContent() {
               if (!regionAreas) return null
               return (
                 <AnimatedSection key={region} delay={ri * 0.1}>
-                  <h2 className="mb-6 font-heading text-xl font-bold text-gold md:text-2xl">
+                  <h2 className="mb-6 font-heading text-xl font-bold text-blue md:text-2xl">
                     {region}
                   </h2>
                   <div className="flex flex-wrap gap-3">

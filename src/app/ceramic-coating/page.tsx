@@ -227,9 +227,11 @@ export default function CeramicCoatingPage() {
             <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/60">
               Ceramic coating is a liquid polymer that chemically bonds to your vehicle&apos;s
               clear coat, forming a permanent layer of protection. Unlike wax or sealant that
-              sits on top and wears away, ceramic becomes part of the surface. The result is
-              extreme hydrophobic properties, resistance to UV damage, chemicals, and
-              contaminants, plus a deep, glossy finish that lasts for years.
+              sits on top and wears away, ceramic becomes part of the surface. JRC Detailing
+              uses professional-grade Gyeon and CarPro ceramic coating systems, trusted by
+              detailers worldwide. The result is extreme hydrophobic properties, resistance to
+              UV damage, chemicals, and contaminants, plus a deep, glossy finish that lasts
+              for years.
             </p>
           </AnimatedSection>
 
@@ -345,7 +347,7 @@ export default function CeramicCoatingPage() {
             </p>
             <h2 className="mb-6 font-heading text-4xl font-extrabold md:text-5xl">
               Trusted by{' '}
-              <span className="text-gradient-gold">
+              <span className="text-gradient-blue">
                 {DEALER_BRANDS.slice(0, 3).join(', ')}
               </span>{' '}
               &amp; More
@@ -362,7 +364,7 @@ export default function CeramicCoatingPage() {
               {DEALER_BRANDS.map((brand) => (
                 <span
                   key={brand}
-                  className="rounded-full border border-white/10 bg-dark-2 px-5 py-2 font-heading text-[0.6rem] font-bold uppercase tracking-[3px] text-white/40 transition-colors hover:text-gold hover:border-gold/30"
+                  className="rounded-full border border-white/10 bg-dark-2 px-5 py-2 font-heading text-[0.6rem] font-bold uppercase tracking-[3px] text-white/40 transition-colors hover:text-blue hover:border-blue/30"
                 >
                   {brand}
                 </span>
@@ -383,8 +385,8 @@ export default function CeramicCoatingPage() {
               Pricing
             </h2>
 
-            <div className="rounded-lg border border-gold/20 bg-dark-2 p-10">
-              <h3 className="mb-2 font-heading text-2xl font-bold text-gold">
+            <div className="rounded-lg border border-blue/20 bg-dark-2 p-10">
+              <h3 className="mb-2 font-heading text-2xl font-bold text-blue">
                 Custom Quote
               </h3>
               <p className="mx-auto mb-6 max-w-lg text-sm leading-relaxed text-white/50">
@@ -396,7 +398,7 @@ export default function CeramicCoatingPage() {
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
                   href="/contact"
-                  className="rounded-sm bg-gold px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-gold-hover hover:shadow-lg hover:shadow-gold/25"
+                  className="rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25"
                 >
                   Request a Quote
                 </Link>
