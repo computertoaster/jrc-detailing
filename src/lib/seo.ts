@@ -158,6 +158,27 @@ export function organizationSchema() {
   }
 }
 
+export function websiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'JRC Detailing',
+    url: SITE_URL,
+    description:
+      'Premium mobile car detailing in Victoria Point, Redlands and Brisbane South. Ceramic coating, paint correction, interior detailing.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'JRC Detailing',
+      url: SITE_URL,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE_URL}/services?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  }
+}
+
 export function howToSchema(
   name: string,
   description: string,
