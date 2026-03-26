@@ -80,9 +80,12 @@ export default function ChatForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Auto-scroll to bottom when messages change
+  // Auto-scroll within chat container only (not the whole page)
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const el = chatEndRef.current
+    if (el?.parentElement) {
+      el.parentElement.scrollTop = el.parentElement.scrollHeight
+    }
   }, [messages, isTyping])
 
   // Auto-focus input when typing stops
