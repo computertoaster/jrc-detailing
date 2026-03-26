@@ -207,7 +207,11 @@ export default function CeramicCoatingPage() {
             </h1>
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60">
               Multi-year paint protection for your investment. Professional-grade coatings
-              applied over fully corrected paintwork by {OWNER.firstName}, with {OWNER.experience}{' '}
+              applied over{' '}
+              <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                fully corrected paintwork
+              </Link>{' '}
+              by {OWNER.firstName}, with {OWNER.experience}{' '}
               years of hands-on experience.
             </p>
           </AnimatedSection>
@@ -241,10 +245,10 @@ export default function CeramicCoatingPage() {
               <AnimatedSection key={benefit.title} delay={i * 0.08}>
                 <div className="rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
                   <div className="mb-4 text-red">{benefit.icon}</div>
-                  <h3 className="mb-2 font-heading text-sm font-bold text-white">
+                  <h3 className="mb-2 font-heading text-base font-bold text-white">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/45">
+                  <p className="text-base leading-relaxed text-white/45">
                     {benefit.description}
                   </p>
                 </div>
@@ -280,10 +284,10 @@ export default function CeramicCoatingPage() {
 
                   {/* Content */}
                   <div>
-                    <h3 className="mb-2 font-heading text-sm font-bold text-white">
+                    <h3 className="mb-2 font-heading text-base font-bold text-white">
                       {step.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-white/50">
+                    <p className="text-base leading-relaxed text-white/50">
                       {step.description}
                     </p>
                   </div>
@@ -312,7 +316,7 @@ export default function CeramicCoatingPage() {
                 {ceramicService.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-center gap-3 text-sm text-white/60"
+                    className="flex items-center gap-3 text-base text-white/60"
                   >
                     <svg
                       width="16"
@@ -389,25 +393,31 @@ export default function CeramicCoatingPage() {
               <h3 className="mb-2 font-heading text-2xl font-bold text-blue">
                 Custom Quote
               </h3>
-              <p className="mx-auto mb-6 max-w-lg text-sm leading-relaxed text-white/50">
+              <p className="mx-auto mb-6 max-w-lg text-base leading-relaxed text-white/50">
                 Every vehicle is different. Pricing depends on vehicle size, current paint
-                condition, the coating system chosen, and whether additional correction work is
-                required. {OWNER.firstName} will inspect your vehicle and provide a detailed
-                quote with no obligation.
+                condition, the coating system chosen, and whether additional{' '}
+                <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                  correction work
+                </Link>{' '}
+                is required. {OWNER.firstName} will inspect your vehicle and provide a detailed
+                quote with no obligation. Got a{' '}
+                <Link href="/new-car-protection" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                  new vehicle
+                </Link>? Check our dedicated new car protection page.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
-                  href="/contact"
+                  href="/book"
                   className="rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25"
+                >
+                  Book Online
+                </Link>
+                <Link
+                  href="/contact"
+                  className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
                 >
                   Request a Quote
                 </Link>
-                <a
-                  href={CONTACT.phoneHref}
-                  className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-                >
-                  Call {CONTACT.phone}
-                </a>
               </div>
             </div>
           </AnimatedSection>
@@ -430,10 +440,10 @@ export default function CeramicCoatingPage() {
             {ceramicFaqs.map((faq, i) => (
               <AnimatedSection key={faq.question} delay={i * 0.06}>
                 <div className="rounded-lg border border-white/6 bg-dark-2 p-6">
-                  <h3 className="mb-3 font-heading text-sm font-bold text-white">
+                  <h3 className="mb-3 font-heading text-base lg:text-lg font-bold text-white">
                     {faq.question}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/50">{faq.answer}</p>
+                  <p className="text-base leading-relaxed text-white/50">{faq.answer}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -451,20 +461,24 @@ export default function CeramicCoatingPage() {
             <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60">
               Send through your vehicle details and {OWNER.firstName} will provide a no-obligation
               quote tailored to your vehicle, its condition, and the level of protection you need.
+              View all{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                services and pricing
+              </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
                 Contact Form
               </Link>
-              <a
-                href={CONTACT.phoneHref}
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-              >
-                Call {OWNER.firstName}
-              </a>
             </div>
           </AnimatedSection>
         </div>

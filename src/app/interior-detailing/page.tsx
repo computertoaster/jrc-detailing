@@ -153,7 +153,11 @@ export default function InteriorDetailingPage() {
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60">
               Professional interior detailing that transforms your cabin from tired to fresh.
               Steam cleaning, leather care, odour removal, and meticulous attention to every
-              surface. From $189 with {OWNER.firstName}.
+              surface. From $189 with {OWNER.firstName}. Pair with a{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>{' '}
+              for complete inside-and-out protection.
             </p>
           </AnimatedSection>
         </div>
@@ -339,21 +343,25 @@ export default function InteriorDetailingPage() {
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60">
               Whether it is a quick refresh or a deep clean for a neglected cabin, {OWNER.firstName}{' '}
-              will bring it back to life. Book your interior detail today.
+              will bring it back to life. View all{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                services and packages
+              </Link>{' '}
+              or book your interior detail today.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
               >
-                Book Now
+                Book Online
               </Link>
-              <a
-                href={CONTACT.phoneHref}
+              <Link
+                href="/contact"
                 className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
-                Call {CONTACT.phone}
-              </a>
+                Get a Quote
+              </Link>
             </div>
           </AnimatedSection>
         </div>

@@ -82,7 +82,14 @@ export default function AboutContent() {
                   Based in Victoria Point, JRC Detailing is a fully mobile service covering
                   the Redlands, Bayside, and Brisbane South. Jesse brings the full studio
                   experience to your driveway, so you can get dealership-quality results
-                  without leaving home.
+                  without leaving home. Explore the full range of{' '}
+                  <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                    services and packages
+                  </Link>{' '}
+                  including{' '}
+                  <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                    ceramic coating
+                  </Link>.
                 </p>
               </div>
             </AnimatedSection>
@@ -161,12 +168,20 @@ export default function AboutContent() {
               Book your detail with Jesse and see why customers across Brisbane South keep
               coming back.
             </p>
-            <Link
-              href="/contact"
-              className="inline-block rounded-lg bg-red px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
-            >
-              Get a Quote
-            </Link>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/book"
+                className="inline-block rounded-lg bg-red px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/services"
+                className="inline-block rounded-lg border border-white/10 bg-dark-2 px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/20 hover:bg-dark-3"
+              >
+                View Services
+              </Link>
+            </div>
           </AnimatedSection>
         </div>
       </section>

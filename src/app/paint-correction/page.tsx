@@ -184,7 +184,11 @@ export default function PaintCorrectionPage() {
             </h1>
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60">
               Professional machine polishing to remove swirl marks, scratches, oxidation, and
-              dullness. Restore your paintwork to a deep, flawless finish. From $320 with{' '}
+              dullness. Restore your paintwork to a deep, flawless finish. The essential first
+              step before{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>. From $320 with{' '}
               {OWNER.firstName}, {OWNER.experience} years experience.
             </p>
           </AnimatedSection>
@@ -439,21 +443,29 @@ export default function PaintCorrectionPage() {
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60">
               Send {OWNER.firstName} a photo of your paint condition and he will recommend the
-              right level of correction for your vehicle.
+              right level of correction for your vehicle. Want to follow up with long-term
+              protection? Ask about{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>{' '}
+              after correction. View all{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                services and pricing
+              </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
                 Get a Quote
               </Link>
-              <a
-                href={CONTACT.phoneHref}
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-              >
-                Call {CONTACT.phone}
-              </a>
             </div>
           </AnimatedSection>
         </div>

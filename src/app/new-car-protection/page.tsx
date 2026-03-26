@@ -163,7 +163,11 @@ export default function NewCarProtectionPage() {
               New Car Protection
             </h1>
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60">
-              Protect your investment from day one. Professional ceramic coating for new vehicles,
+              Protect your investment from day one. Professional{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>{' '}
+              for new vehicles,
               applied by a detailing specialist with {OWNER.experience} years of experience. Better
               quality, better value, and better results than dealership paint protection.
             </p>
@@ -370,21 +374,28 @@ export default function NewCarProtectionPage() {
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60">
               Get in touch with {OWNER.firstName} to discuss protection options for your new
-              vehicle. The sooner you protect it, the better the long-term results.
+              vehicle. The sooner you protect it, the better the long-term results. View all{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                services and pricing
+              </Link>{' '}
+              or learn more about our{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating process
+              </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
                 Get a Quote
               </Link>
-              <a
-                href={CONTACT.phoneHref}
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-              >
-                Call {CONTACT.phone}
-              </a>
             </div>
           </AnimatedSection>
         </div>

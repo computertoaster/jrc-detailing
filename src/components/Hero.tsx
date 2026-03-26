@@ -83,7 +83,7 @@ export default function Hero() {
               alt="JRC Detailing"
               width={180}
               height={180}
-              className="drop-shadow-2xl"
+              className="max-w-[120px] md:max-w-[180px] drop-shadow-2xl"
               priority
             />
           </motion.div>
@@ -96,7 +96,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-red" />
             </span>
-            <span className="font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/80">
+            <span className="font-heading text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/80">
               {OWNER.experience} Years &middot; Mobile &middot; Dealership Trusted
             </span>
           </div>
@@ -104,10 +104,10 @@ export default function Hero() {
 
         {/* Main heading */}
         <motion.h1 variants={stagger.item} className="mb-6 font-heading leading-[0.95]">
-          <span className="block text-[clamp(2.5rem,7vw,5.5rem)] font-light tracking-tight text-white">
+          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white">
             Premium
           </span>
-          <span className="block text-[clamp(2.5rem,7vw,5.5rem)] font-bold tracking-tight">
+          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
             Mobile <span className="text-red">Detailing</span>
           </span>
         </motion.h1>
@@ -115,7 +115,7 @@ export default function Hero() {
         {/* Subtitle */}
         <motion.p
           variants={stagger.item}
-          className="mx-auto mb-4 max-w-xl text-lg text-white/60 md:text-xl"
+          className="mx-auto mb-4 max-w-xl text-lg text-white/60 sm:text-xl"
         >
           Dealership-grade results, delivered to your door.
         </motion.p>
@@ -123,7 +123,7 @@ export default function Hero() {
         {/* Areas */}
         <motion.p
           variants={stagger.item}
-          className="mb-10 font-heading text-[0.6rem] font-semibold uppercase tracking-[4px] text-white/30"
+          className="mb-10 font-heading text-[0.65rem] sm:text-xs font-semibold uppercase tracking-[3px] sm:tracking-[4px] text-white/30"
         >
           Victoria Point &middot; Redlands &middot; Bayside &middot; Brisbane South
         </motion.p>
@@ -178,7 +178,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
+        className="absolute bottom-8 left-1/2 z-10 hidden sm:flex -translate-x-1/2 flex-col items-center gap-3"
       >
         <span className="font-heading text-[0.55rem] font-semibold uppercase tracking-[3px] text-white/25">
           Scroll

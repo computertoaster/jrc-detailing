@@ -88,18 +88,36 @@ export default function HomePage() {
                 With {OWNER.experience} years of hands-on experience, Jesse has built JRC Detailing
                 on precision, quality products, and results that speak for themselves. From daily
                 drivers to prestige vehicles, every detail gets the same meticulous attention.
+                Specialising in{' '}
+                <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                  ceramic coating
+                </Link>,{' '}
+                <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                  paint correction
+                </Link>, and{' '}
+                <Link href="/interior-detailing" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                  interior detailing
+                </Link>.
               </p>
               <p className="mb-8 text-base leading-relaxed text-white/60">
                 Based in {OWNER.location}, JRC Detailing is a fully mobile service covering the
                 Redlands, Bayside, and greater Brisbane South. No workshop needed; Jesse brings
                 everything to your door.
               </p>
-              <Link
-                href="/about"
-                className="inline-block rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
-              >
-                More About Jesse
-              </Link>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/about"
+                  className="inline-block rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+                >
+                  Learn More About Jesse
+                </Link>
+                <Link
+                  href="/book"
+                  className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                >
+                  Book a Detail
+                </Link>
+              </div>
             </AnimatedSection>
           </div>
         </div>
@@ -176,6 +194,162 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Why JRC ── */}
+      <section className="bg-black py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <AnimatedSection className="mb-16 text-center">
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              The Difference
+            </p>
+            <h2 className="mb-4 font-heading text-4xl font-extrabold md:text-5xl">
+              Why Brisbane Chooses JRC
+            </h2>
+            <p className="mx-auto max-w-xl text-base text-gray">
+              Professional results, premium products, and a mobile service that comes to you.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'Mobile Service',
+                description:
+                  'We come to you. No drop-offs, no waiting. Professional results in your driveway.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                ),
+              },
+              {
+                title: '7+ Years Experience',
+                description:
+                  'From luxury dealerships to family cars. Over seven years of hands-on detailing expertise.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Premium Products',
+                description:
+                  'AutoSmart, Bowden\'s Own, Gyeon, and CarPro. Only professional-grade products.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Dealership Trusted',
+                description:
+                  'The same standard trusted by BMW, Mercedes, Mazda, Ford, and more.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                ),
+              },
+            ].map((card, i) => (
+              <AnimatedSection key={card.title} delay={i * 0.1}>
+                <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 text-center transition-all duration-300 hover:border-blue/30 hover:-translate-y-1">
+                  <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 text-red transition-colors group-hover:bg-blue/10 group-hover:text-blue">
+                    {card.icon}
+                  </div>
+                  <h3 className="mb-3 font-heading text-sm font-bold uppercase tracking-[1px] text-white">
+                    {card.title}
+                  </h3>
+                  <p className="text-base leading-relaxed text-white/45">
+                    {card.description}
+                  </p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection className="mt-12 text-center">
+            <Link
+              href="/services"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+            >
+              View All Services
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── Customer Reviews ── */}
+      <section className="bg-dark py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <AnimatedSection className="mb-16 text-center">
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              Customer Reviews
+            </p>
+            <h2 className="mb-4 font-heading text-4xl font-extrabold md:text-5xl">
+              What Our Customers Say
+            </h2>
+            <p className="mx-auto max-w-xl text-base text-gray">
+              See our reviews on Google and{' '}
+              <a
+                href={CONTACT.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover"
+              >
+                Instagram
+              </a>.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                text: 'Incredible attention to detail. Jesse transformed my BMW inside and out. Best detailer in the Redlands.',
+                stars: 5,
+              },
+              {
+                text: 'Had the ceramic coating done on my new Mazda CX-5. The finish is unreal and water just sheets off. Could not be happier.',
+                stars: 5,
+              },
+              {
+                text: 'Third time using JRC for a full detail. Consistently great results every time. Would not go anywhere else.',
+                stars: 5,
+              },
+            ].map((review, i) => (
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div className="rounded-lg border border-white/6 bg-dark-2 p-8 transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
+                  {/* Stars */}
+                  <div className="mb-4 flex gap-1">
+                    {Array.from({ length: review.stars }).map((_, j) => (
+                      <span key={j} className="text-blue text-lg">&#9733;</span>
+                    ))}
+                  </div>
+                  <p className="mb-6 text-base leading-relaxed text-white/60 italic">
+                    &ldquo;{review.text}&rdquo;
+                  </p>
+                  <p className="font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/30">
+                    Verified Customer
+                  </p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection className="mt-12 text-center">
+            <a
+              href={CONTACT.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+            >
+              See More on Instagram
+            </a>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* ── Gallery Preview ── */}
       <section className="bg-black py-24">
         <div className="mx-auto max-w-7xl px-6">
@@ -245,8 +419,19 @@ export default function HomePage() {
               Ceramic Coating That Lasts for Years
             </h2>
             <p className="mb-8 max-w-2xl text-base leading-relaxed text-white/60">
-              Professional-grade ceramic coating applied over fully corrected paintwork. The
-              ultimate protection for vehicles that deserve more than a standard wax.
+              Professional-grade{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>{' '}
+              applied over fully corrected paintwork. The
+              ultimate protection for vehicles that deserve more than a standard wax. Ideal for{' '}
+              <Link href="/new-car-protection" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                new car protection
+              </Link>{' '}
+              or after a{' '}
+              <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                full paint correction
+              </Link>.
             </p>
 
             <ul className="mb-10 grid gap-3 sm:grid-cols-2 max-w-2xl">
@@ -258,7 +443,7 @@ export default function HomePage() {
                 'Full paint correction included',
                 'Dealership trusted application',
               ].map((benefit) => (
-                <li key={benefit} className="flex items-center gap-3 text-sm text-white/70">
+                <li key={benefit} className="flex items-center gap-3 text-base text-white/70">
                   <svg
                     width="16"
                     height="16"
@@ -279,12 +464,20 @@ export default function HomePage() {
               ))}
             </ul>
 
-            <Link
-              href="/contact"
-              className="inline-block rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25"
-            >
-              Request a Quote
-            </Link>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/ceramic-coating"
+                className="inline-block rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25"
+              >
+                Learn About Ceramic Coating
+              </Link>
+              <Link
+                href="/book"
+                className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              >
+                Book Now
+              </Link>
+            </div>
           </AnimatedSection>
         </div>
       </section>
@@ -374,17 +567,17 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
                 Get a Quote
               </Link>
-              <a
-                href={CONTACT.phoneHref}
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-              >
-                Call Jesse
-              </a>
             </div>
           </AnimatedSection>
         </div>

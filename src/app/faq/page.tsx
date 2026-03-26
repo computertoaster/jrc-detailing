@@ -139,7 +139,7 @@ function FAQAccordionItem({ question, answer }: { question: string; answer: stri
         className="flex w-full items-center justify-between gap-4 p-6 text-left"
         aria-expanded={isOpen}
       >
-        <h3 className="font-heading text-sm font-bold text-white pr-4">{question}</h3>
+        <h3 className="font-heading text-base lg:text-lg font-bold text-white pr-4">{question}</h3>
         <svg
           width="20"
           height="20"
@@ -157,7 +157,7 @@ function FAQAccordionItem({ question, answer }: { question: string; answer: stri
       <div
         className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
       >
-        <p className="px-6 pb-6 text-sm leading-relaxed text-white/50">{answer}</p>
+        <p className="px-6 pb-6 text-base leading-relaxed text-white/50">{answer}</p>
       </div>
     </div>
   )
@@ -238,21 +238,42 @@ export default function FAQPage() {
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60">
               {OWNER.firstName} is happy to answer any questions about services, pricing, or the
-              detailing process. Get in touch today.
+              detailing process. Browse our{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                services and pricing
+              </Link>{' '}
+              or get in touch today.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
                 Contact Form
               </Link>
-              <a
-                href={CONTACT.phoneHref}
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-              >
-                Call {CONTACT.phone}
-              </a>
+            </div>
+
+            {/* Related Pages */}
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+              <span className="text-sm text-white/30">Learn more:</span>
+              <Link href="/ceramic-coating" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Ceramic Coating
+              </Link>
+              <Link href="/paint-correction" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Paint Correction
+              </Link>
+              <Link href="/interior-detailing" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                Interior Detailing
+              </Link>
+              <Link href="/new-car-protection" className="text-sm text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                New Car Protection
+              </Link>
             </div>
           </AnimatedSection>
         </div>

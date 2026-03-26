@@ -83,7 +83,7 @@ export default function Navigation() {
           : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
         {/* Logo */}
         <Link href="/" className="relative z-10 flex-shrink-0">
           <Image
@@ -91,7 +91,7 @@ export default function Navigation() {
             alt="JRC Detailing"
             width={scrolled ? 100 : 130}
             height={scrolled ? 38 : 50}
-            className="transition-all duration-500"
+            className="max-w-[80px] sm:max-w-[100px] md:max-w-none transition-all duration-500"
             priority
           />
         </Link>

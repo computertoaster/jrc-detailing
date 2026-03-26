@@ -85,7 +85,7 @@ function ProgressBar({ currentStep }: { currentStep: number }) {
               {/* Circle */}
               <div className="flex flex-col items-center">
                 <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-heading font-bold transition-all duration-300 ${
+                  className={`flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full text-xs sm:text-sm font-heading font-bold transition-all duration-300 ${
                     isCompleted
                       ? 'bg-blue text-white'
                       : isActive
@@ -150,6 +150,8 @@ export default function BookingForm() {
   const [direction, setDirection] = useState(1)
   const [form, setForm] = useState<FormData>(initialFormData)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const selectedService = useMemo(
     () => services.find((s) => s.slug === form.serviceSlug) ?? null,
@@ -205,10 +207,33 @@ export default function BookingForm() {
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // TODO: Wire to API route for Stripe payment link, Xero invoice, and email confirmation
-    setSubmitted(true)
+    setSubmitError('')
+    setSubmitting(true)
+
+    try {
+      const res = await fetch('/api/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}))
+        throw new Error(json.error || 'Failed to submit booking')
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong. Please try again or call us on 0481 998 874.'
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -371,13 +396,21 @@ export default function BookingForm() {
             )}
           </AnimatePresence>
 
+          {/* Error message */}
+          {submitError && (
+            <div className="mt-4 rounded-sm border border-red/30 bg-red/10 px-4 py-3 text-center text-sm text-red">
+              {submitError}
+            </div>
+          )}
+
           {/* Navigation Buttons */}
-          <div className="mt-8 flex items-center justify-between">
+          <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
             {step > 1 ? (
               <button
                 type="button"
                 onClick={goBack}
-                className="rounded-sm border border-white/10 px-6 py-3 font-heading text-[0.7rem] font-semibold uppercase tracking-[2px] text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white"
+                disabled={submitting}
+                className="w-full sm:w-auto rounded-sm border border-white/10 px-6 py-3 min-h-[48px] font-heading text-[0.7rem] font-semibold uppercase tracking-[2px] text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white disabled:opacity-30"
               >
                 Back
               </button>
@@ -390,17 +423,17 @@ export default function BookingForm() {
                 type="button"
                 onClick={goNext}
                 disabled={!canProceed()}
-                className="rounded-sm bg-blue px-8 py-3 font-heading text-[0.7rem] font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-blue/80 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto rounded-sm bg-blue px-8 py-3 min-h-[48px] font-heading text-[0.7rem] font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-blue/80 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 Next
               </button>
             ) : (
               <button
                 type="submit"
-                disabled={!canProceed()}
-                className="rounded-sm bg-red px-8 py-3 font-heading text-[0.7rem] font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={!canProceed() || submitting}
+                className={`w-full sm:w-auto rounded-sm bg-red px-8 py-3 min-h-[48px] font-heading text-[0.7rem] font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 disabled:opacity-30 disabled:cursor-not-allowed ${submitting ? 'cursor-wait' : ''}`}
               >
-                Submit Booking
+                {submitting ? 'Submitting...' : 'Submit Booking'}
               </button>
             )}
           </div>
@@ -430,7 +463,7 @@ function StepService({
         Select Your Service
       </h2>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
         {services.map((service) => (
           <button
             key={service.slug}
@@ -546,7 +579,7 @@ function StepVehicle({
             value={form.vehicleMake}
             onChange={(e) => update('vehicleMake', e.target.value)}
             placeholder="e.g. BMW"
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
           />
         </div>
 
@@ -559,7 +592,7 @@ function StepVehicle({
             value={form.vehicleModel}
             onChange={(e) => update('vehicleModel', e.target.value)}
             placeholder="e.g. X5"
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
           />
         </div>
 
@@ -570,7 +603,7 @@ function StepVehicle({
             value={form.vehicleYear}
             onChange={(e) => update('vehicleYear', e.target.value)}
             placeholder="e.g. 2024"
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
           />
         </div>
 
@@ -581,7 +614,7 @@ function StepVehicle({
             value={form.vehicleColour}
             onChange={(e) => update('vehicleColour', e.target.value)}
             placeholder="e.g. Black Sapphire"
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
           />
         </div>
       </div>
@@ -595,7 +628,7 @@ function StepVehicle({
           onChange={(e) => update('conditionNotes', e.target.value)}
           placeholder="Any specific areas of concern? Scratches, stains, pet hair, etc."
           rows={4}
-          className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors resize-none"
+          className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors resize-none"
         />
       </div>
     </div>
@@ -630,7 +663,7 @@ function StepDateTime({
             value={form.preferredDate}
             onChange={(e) => update('preferredDate', e.target.value)}
             min={minDate}
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white focus:border-blue focus:outline-none transition-colors [color-scheme:dark]"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white focus:border-blue focus:outline-none transition-colors [color-scheme:dark]"
           />
         </div>
 
@@ -641,7 +674,7 @@ function StepDateTime({
           <select
             value={form.preferredTime}
             onChange={(e) => update('preferredTime', e.target.value)}
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white focus:border-blue focus:outline-none transition-colors appearance-none"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white focus:border-blue focus:outline-none transition-colors appearance-none"
           >
             <option value="">Select a time slot</option>
             {TIME_SLOTS.map((slot) => (
@@ -661,7 +694,7 @@ function StepDateTime({
             value={form.alternativeDate}
             onChange={(e) => update('alternativeDate', e.target.value)}
             min={minDate}
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white focus:border-blue focus:outline-none transition-colors [color-scheme:dark]"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white focus:border-blue focus:outline-none transition-colors [color-scheme:dark]"
           />
         </div>
 
@@ -672,7 +705,7 @@ function StepDateTime({
           <select
             value={form.suburb}
             onChange={(e) => update('suburb', e.target.value)}
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white focus:border-blue focus:outline-none transition-colors appearance-none"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white focus:border-blue focus:outline-none transition-colors appearance-none"
           >
             <option value="">Select your suburb</option>
             {areas.map((area) => (
@@ -693,7 +726,7 @@ function StepDateTime({
           onChange={(e) => update('address', e.target.value)}
           placeholder="Where should Jesse come to you?"
           rows={3}
-          className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors resize-none"
+          className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors resize-none"
         />
       </div>
     </div>
@@ -732,7 +765,7 @@ function StepConfirm({
             value={form.name}
             onChange={(e) => update('name', e.target.value)}
             placeholder="Your full name"
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
           />
         </div>
 
@@ -745,7 +778,7 @@ function StepConfirm({
             value={form.phone}
             onChange={(e) => update('phone', e.target.value)}
             placeholder="0400 000 000"
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
           />
         </div>
 
@@ -758,7 +791,7 @@ function StepConfirm({
             value={form.email}
             onChange={(e) => update('email', e.target.value)}
             placeholder="you@email.com"
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors"
           />
         </div>
 
@@ -769,7 +802,7 @@ function StepConfirm({
           <select
             value={form.referralSource}
             onChange={(e) => update('referralSource', e.target.value)}
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white focus:border-blue focus:outline-none transition-colors appearance-none"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white focus:border-blue focus:outline-none transition-colors appearance-none"
           >
             <option value="">Select one</option>
             {REFERRAL_SOURCES.map((src) => (
@@ -789,7 +822,7 @@ function StepConfirm({
             onChange={(e) => update('specialRequests', e.target.value)}
             placeholder="Anything else Jesse should know?"
             rows={3}
-            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors resize-none"
+            className="w-full rounded-sm bg-dark-3 border border-dark-5 px-4 py-3 min-h-[48px] text-base text-white placeholder-white/25 focus:border-blue focus:outline-none transition-colors resize-none"
           />
         </div>
       </div>

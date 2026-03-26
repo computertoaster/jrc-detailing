@@ -5,10 +5,18 @@ import { CONTACT, OWNER, SITE_NAME } from '@/lib/constants'
 const footerLinks = [
   { href: '/services', label: 'Services' },
   { href: '/gallery', label: 'Gallery' },
-  { href: '/ceramic-coating', label: 'Ceramic' },
+  { href: '/ceramic-coating', label: 'Ceramic Coating' },
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
+]
+
+const footerServiceLinks = [
+  { href: '/paint-correction', label: 'Paint Correction' },
+  { href: '/interior-detailing', label: 'Interior Detailing' },
+  { href: '/new-car-protection', label: 'New Car Protection' },
+  { href: '/areas', label: 'Service Areas' },
+  { href: '/book', label: 'Book Now' },
 ]
 
 export default function Footer() {
@@ -27,16 +35,29 @@ export default function Footer() {
         </div>
 
         {/* Nav Links */}
-        <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-8 mb-8">
-          {footerLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/40 transition-colors duration-300 hover:text-red"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav aria-label="Footer navigation" className="mb-4">
+          <div className="flex flex-wrap items-center justify-center gap-8 mb-4">
+            {footerLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-heading text-xs font-semibold uppercase tracking-[2px] text-white/40 transition-colors duration-300 hover:text-red"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-4">
+            {footerServiceLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-heading text-[0.6rem] font-semibold uppercase tracking-[2px] text-white/25 transition-colors duration-300 hover:text-red"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </nav>
 
         {/* Tagline */}
@@ -45,7 +66,7 @@ export default function Footer() {
         </p>
 
         {/* Location */}
-        <p className="text-center text-[0.75rem] text-white/25 mb-10">
+        <p className="text-center text-sm text-white/25 mb-10">
           {OWNER.location} &middot; Servicing Redlands, Bayside &amp; Brisbane South
         </p>
 
@@ -53,7 +74,7 @@ export default function Footer() {
         <div className="mx-auto mb-8 h-px w-24 bg-white/6" />
 
         {/* Contact */}
-        <div className="flex flex-wrap items-center justify-center gap-6 mb-8 text-[0.75rem] text-white/30">
+        <div className="flex flex-wrap items-center justify-center gap-6 mb-8 text-sm text-white/30">
           <a
             href={CONTACT.phoneHref}
             className="transition-colors hover:text-red"

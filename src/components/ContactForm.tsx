@@ -14,6 +14,7 @@ export default function ContactForm() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState(false)
+  const [sending, setSending] = useState(false)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -21,26 +22,44 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setSubmitError(false)
-    setSubmitted(true)
+    setSending(true)
 
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        service: '',
-        vehicle: '',
-        message: '',
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      if (!res.ok) {
+        throw new Error('Failed to send')
+      }
+
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          service: '',
+          vehicle: '',
+          message: '',
+        })
+      }, 3000)
+    } catch {
+      setSubmitError(true)
+      setTimeout(() => setSubmitError(false), 4000)
+    } finally {
+      setSending(false)
+    }
   }
 
   const inputClasses =
-    'w-full rounded-lg border border-white/8 bg-dark-3 px-4 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-red/50 focus:bg-dark-4'
+    'w-full rounded-lg border border-white/8 bg-dark-3 px-4 py-3 min-h-[48px] text-sm sm:text-base text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-red/50 focus:bg-dark-4'
 
   const labelClasses =
     'mb-2 block font-heading text-[0.6rem] font-semibold uppercase tracking-[2px] text-gray'
@@ -163,17 +182,26 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Error message */}
+      {submitError && (
+        <p className="text-center text-sm text-red">
+          Something went wrong. Please try again or call us on 0481 998 874.
+        </p>
+      )}
+
       {/* Submit */}
       <button
         type="submit"
-        disabled={submitted}
+        disabled={submitted || sending}
         className={`w-full rounded-lg py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 ${
           submitted
             ? 'bg-green-600 shadow-lg shadow-green-600/25'
-            : 'bg-red hover:bg-red-hover hover:shadow-lg hover:shadow-red/25'
-        }`}
+            : submitError
+              ? 'bg-red/60'
+              : 'bg-red hover:bg-red-hover hover:shadow-lg hover:shadow-red/25'
+        } ${sending ? 'opacity-70 cursor-wait' : ''}`}
       >
-        {submitted ? 'SENT!' : 'Send Enquiry'}
+        {submitted ? 'SENT!' : sending ? 'Sending...' : 'Send Enquiry'}
       </button>
     </form>
   )

@@ -84,7 +84,18 @@ export default function ServicesPage() {
             <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-light">
               Professional mobile detailing across the Redlands, Bayside, and Brisbane South.
               Every package is delivered at your door by {OWNER.firstName}, with {OWNER.experience}{' '}
-              years of experience and dealership-grade products.
+              years of experience and dealership-grade products. Looking for something specific?
+              Check out our dedicated{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>,{' '}
+              <Link href="/paint-correction" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                paint correction
+              </Link>, and{' '}
+              <Link href="/interior-detailing" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                interior detailing
+              </Link>{' '}
+              pages.
             </p>
           </AnimatedSection>
         </div>
@@ -138,7 +149,7 @@ export default function ServicesPage() {
                           </span>
                         )}
                       </div>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/50">
+                      <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/50">
                         {service.description}
                       </p>
                     </div>
@@ -164,7 +175,7 @@ export default function ServicesPage() {
                       {service.features.map((feature) => (
                         <li
                           key={feature}
-                          className="flex items-center gap-2.5 text-[0.8rem] text-white/50"
+                          className="flex items-center gap-2.5 text-sm text-white/50"
                         >
                           <svg
                             width="14"
@@ -245,10 +256,10 @@ export default function ServicesPage() {
             {faqs.map((faq, i) => (
               <AnimatedSection key={faq.question} delay={i * 0.06}>
                 <div className="rounded-lg border border-white/6 bg-dark-2 p-6">
-                  <h3 className="mb-3 font-heading text-sm font-bold text-white">
+                  <h3 className="mb-3 font-heading text-base lg:text-lg font-bold text-white">
                     {faq.question}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/50">{faq.answer}</p>
+                  <p className="text-base leading-relaxed text-white/50">{faq.answer}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -268,21 +279,24 @@ export default function ServicesPage() {
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60">
               Send through your vehicle details and {OWNER.firstName} will get back to you with
-              a tailored quote. Same-week bookings usually available.
+              a tailored quote. Same-week bookings usually available. Have questions? Check the{' '}
+              <Link href="/faq" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                FAQ
+              </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
               >
                 Get a Quote
               </Link>
-              <a
-                href={CONTACT.phoneHref}
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
-              >
-                Call {CONTACT.phone}
-              </a>
             </div>
           </AnimatedSection>
         </div>

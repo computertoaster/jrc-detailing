@@ -213,21 +213,28 @@ export default async function SuburbPage({ params }: SuburbPageProps) {
             </h2>
             <p className="mb-8 text-gray-light">
               Ready for a showroom finish? Get in touch with {OWNER.firstName} to book your
-              mobile detail in {area.name}.
+              mobile detail in {area.name}. Browse{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                all services
+              </Link>{' '}
+              including{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="/book"
                 className="inline-block rounded-lg bg-red px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Online
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-block rounded-lg border border-white/10 bg-dark-2 px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/20 hover:bg-dark-3"
               >
                 Get a Quote
               </Link>
-              <a
-                href={CONTACT.phoneHref}
-                className="inline-block rounded-lg border border-white/10 bg-dark-2 px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/20 hover:bg-dark-3"
-              >
-                Call {CONTACT.phone}
-              </a>
             </div>
           </AnimatedSection>
         </div>

@@ -47,15 +47,15 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         )}
 
         {/* Service name */}
-        <h3 className="mb-3 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white">
+        <h3 className="mb-3 font-heading text-xs sm:text-sm font-bold uppercase tracking-[2px] text-white">
           {service.name}
         </h3>
 
         {/* Price */}
         <div className="mb-4">
           {hasPrice ? (
-            <span className="font-heading text-2xl font-bold text-blue">
-              <span className="text-base font-medium text-blue/70">$</span>
+            <span className="font-heading text-3xl font-bold text-blue">
+              <span className="text-lg font-medium text-blue/70">$</span>
               {service.price}
             </span>
           ) : (
@@ -69,20 +69,20 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <div className="mb-4 h-0.5 w-10 bg-red/40" />
 
         {/* Short description */}
-        <p className="mb-5 text-sm leading-relaxed text-white/40">
+        <p className="mb-5 text-sm sm:text-base leading-relaxed text-white/40">
           {service.shortDesc}
         </p>
 
         {/* Features */}
         <ul className="space-y-2">
           {service.features.slice(0, 5).map((feature) => (
-            <li key={feature} className="flex items-start gap-2.5 text-[0.8rem] text-white/50">
+            <li key={feature} className="flex items-start gap-2.5 text-sm text-white/50">
               <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red/60" />
               {feature}
             </li>
           ))}
           {service.features.length > 5 && (
-            <li className="text-[0.75rem] text-white/30">
+            <li className="text-sm text-white/30">
               +{service.features.length - 5} more included
             </li>
           )}

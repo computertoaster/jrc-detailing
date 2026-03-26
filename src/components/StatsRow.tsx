@@ -82,7 +82,7 @@ export default function StatsRow() {
                   suffix={stat.suffix}
                 />
               </div>
-              <div className="font-heading text-[0.55rem] font-semibold uppercase tracking-[2px] text-white/30">
+              <div className="font-heading text-[0.6rem] sm:text-xs font-semibold uppercase tracking-[1.5px] sm:tracking-[2px] text-white/30">
                 {stat.label}
               </div>
             </motion.div>

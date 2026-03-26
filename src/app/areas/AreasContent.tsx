@@ -28,7 +28,14 @@ export default function AreasContent() {
               Service Areas
             </h1>
             <p className="mx-auto max-w-xl text-base text-gray-light md:text-lg">
-              Mobile detailing across Brisbane South and the Redlands.
+              Mobile detailing across Brisbane South and the Redlands. Browse our{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                services and pricing
+              </Link>{' '}
+              or{' '}
+              <Link href="/book" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                book online
+              </Link>.
             </p>
           </AnimatedSection>
         </div>
@@ -101,13 +108,20 @@ export default function AreasContent() {
             </h2>
             <p className="mb-8 text-gray-light">
               If your suburb is listed above, Jesse can be at your door. If it&apos;s not
-              listed, get in touch anyway; we may still be able to help.
+              listed, get in touch anyway; we may still be able to help. Check out our{' '}
+              <Link href="/ceramic-coating" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                ceramic coating
+              </Link>{' '}
+              and{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                full service range
+              </Link>.
             </p>
             <Link
-              href="/contact"
+              href="/book"
               className="inline-block rounded-lg bg-red px-8 py-4 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
             >
-              Book Now
+              Book Online
             </Link>
           </AnimatedSection>
         </div>

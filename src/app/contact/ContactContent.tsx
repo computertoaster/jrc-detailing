@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import AnimatedSection from '@/components/AnimatedSection'
 import ContactForm from '@/components/ContactForm'
 import { CONTACT, OWNER } from '@/lib/constants'
@@ -38,7 +39,14 @@ export default function ContactContent() {
             </h1>
             <p className="mx-auto max-w-xl text-base text-gray-light md:text-lg">
               Ready for a showroom finish? {OWNER.firstName} personally handles every
-              enquiry.
+              enquiry. Prefer to{' '}
+              <Link href="/book" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                book online
+              </Link>? Browse our{' '}
+              <Link href="/services" className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover">
+                services and pricing
+              </Link>{' '}
+              first.
             </p>
           </AnimatedSection>
         </div>
@@ -195,12 +203,12 @@ export default function ContactContent() {
               Based in Victoria Point, JRC Detailing provides mobile car detailing across
               the Redlands Coast, Bayside suburbs, and greater Brisbane South. From
               Cleveland to Springwood, Wynnum to Logan, Jesse covers it all. Check our{' '}
-              <a
+              <Link
                 href="/areas"
                 className="text-red transition-colors hover:text-white"
               >
                 areas page
-              </a>{' '}
+              </Link>{' '}
               for the full list of suburbs serviced.
             </p>
           </AnimatedSection>
