@@ -44,31 +44,72 @@ const signs = [
     title: 'Swirl Marks',
     description:
       'Circular spider-web patterns visible under direct sunlight or strong lighting. Usually caused by automatic car washes, poor washing technique, or dirty wash mitts.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 12a4 4 0 018 0" />
+        <path d="M10 8a6 6 0 014 0" />
+      </svg>
+    ),
   },
   {
     title: 'Light Scratches',
     description:
       'Fine surface scratches from daily use, car park incidents, or brushing against the vehicle. If you can feel it with a fingernail, it may need wet sanding.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M4 20L20 4" />
+        <path d="M6 16L18 8" />
+        <path d="M8 18L16 10" />
+      </svg>
+    ),
   },
   {
     title: 'Oxidation',
     description:
       'Dull, chalky, or faded paintwork caused by prolonged UV exposure. Common on vehicles parked outdoors in Queensland without a garage or carport.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="5" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+      </svg>
+    ),
   },
   {
     title: 'Water Spots',
     description:
       'Mineral deposits left behind from water evaporating on the surface. If left untreated, they etch into the clear coat and become permanent.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+      </svg>
+    ),
   },
   {
     title: 'Dull Paint',
     description:
       'Paint that has lost its depth, gloss, and colour vibrancy. Often a combination of embedded contaminants, micro-marring, and UV degradation working together.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" opacity="0.4" />
+        <path d="M12 2a10 10 0 010 20" />
+      </svg>
+    ),
   },
   {
     title: 'Before Ceramic Coating',
     description:
       'Ceramic coating locks in whatever is underneath. Applying coating over defective paint preserves the imperfections permanently. Paint correction should always be done first.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
   },
 ]
 
@@ -232,17 +273,45 @@ export default function PaintCorrectionPage() {
           </AnimatedSection>
 
           <div className="space-y-6">
-            {stages.map((stage, i) => (
-              <AnimatedSection key={stage.stage} delay={i * 0.08}>
-                <div className="rounded-lg border border-white/6 bg-dark-2 p-8 transition-colors hover:border-white/10">
-                  <h3 className="mb-3 font-heading text-lg font-bold text-white">
-                    {stage.stage}
-                  </h3>
-                  <p className="mb-4 text-sm leading-relaxed text-white/50">{stage.description}</p>
-                  <p className="text-sm font-medium text-red">{stage.included}</p>
-                </div>
-              </AnimatedSection>
-            ))}
+            {stages.map((stage, i) => {
+              const defectRemoval = i === 0 ? 65 : i === 1 ? 85 : 97
+              return (
+                <AnimatedSection key={stage.stage} delay={i * 0.08}>
+                  <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 transition-all duration-300 hover:border-red/20 hover:shadow-md hover:shadow-red/5">
+                    <div className="flex items-start gap-5">
+                      {/* Stage number badge */}
+                      <div className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center">
+                        <div className="absolute inset-0 rounded-full border-2 border-red/20 transition-all duration-300 group-hover:border-red/40" />
+                        <div className="absolute inset-1 rounded-full bg-red/10" />
+                        <span className="relative font-heading text-lg font-bold text-red">{i + 1}</span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="mb-3 font-heading text-lg font-bold text-white">
+                          {stage.stage}
+                        </h3>
+                        <p className="mb-4 text-sm leading-relaxed text-white/50">{stage.description}</p>
+
+                        {/* Defect removal progress bar */}
+                        <div className="mb-3">
+                          <div className="mb-1.5 flex items-center justify-between">
+                            <span className="text-xs font-medium text-white/40">Defect Removal</span>
+                            <span className="font-heading text-xs font-bold text-red">{defectRemoval}%</span>
+                          </div>
+                          <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
+                            <div
+                              className="h-full rounded-full bg-gradient-to-r from-red/60 to-red transition-all duration-700"
+                              style={{ width: `${defectRemoval}%` }}
+                            />
+                          </div>
+                        </div>
+
+                        <p className="text-sm font-medium text-red">{stage.included}</p>
+                      </div>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -262,7 +331,10 @@ export default function PaintCorrectionPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {signs.map((sign, i) => (
               <AnimatedSection key={sign.title} delay={i * 0.06}>
-                <div className="rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
+                <div className="group rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-red/20 hover:-translate-y-1 hover:shadow-lg hover:shadow-red/5">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-red/10 text-red transition-all duration-300 group-hover:scale-110">
+                    {sign.icon}
+                  </div>
                   <h3 className="mb-2 font-heading text-sm font-bold text-white">{sign.title}</h3>
                   <p className="text-sm leading-relaxed text-white/45">{sign.description}</p>
                 </div>
@@ -290,9 +362,12 @@ export default function PaintCorrectionPage() {
           <div className="space-y-6">
             {processSteps.map((step, i) => (
               <AnimatedSection key={step.step} delay={i * 0.06}>
-                <div className="flex gap-6 rounded-lg border border-white/6 bg-dark-2 p-6 transition-colors hover:border-white/10">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-xl font-bold text-red">
-                    {step.step}
+                <div className="group flex gap-6 rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-red/20 hover:shadow-md hover:shadow-red/5">
+                  {/* Circular step badge */}
+                  <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center">
+                    <div className="absolute inset-0 rounded-full border-2 border-red/20 transition-all duration-300 group-hover:border-red/40" />
+                    <div className="absolute inset-1 rounded-full bg-red/10" />
+                    <span className="relative font-heading text-lg font-bold text-red">{step.step}</span>
                   </div>
                   <div>
                     <h3 className="mb-2 font-heading text-sm font-bold text-white">
@@ -384,8 +459,8 @@ export default function PaintCorrectionPage() {
 
       {/* ── Before / After Concept ── */}
       <section className="bg-black py-24">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <AnimatedSection>
+        <div className="mx-auto max-w-4xl px-6">
+          <AnimatedSection className="mb-12 text-center">
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
               Results
             </p>
@@ -394,12 +469,68 @@ export default function PaintCorrectionPage() {
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/60">
               Paint correction produces a dramatic visual transformation. Swirl marks, dullness,
-              and haze are replaced with depth, clarity, and mirror-like reflections. The results
-              speak for themselves under any lighting condition.
+              and haze are replaced with depth, clarity, and mirror-like reflections.
             </p>
+          </AnimatedSection>
+
+          {/* Before / After Visual Indicator */}
+          <AnimatedSection>
+            <div className="mx-auto max-w-2xl rounded-lg border border-white/6 bg-dark-2 p-8">
+              <div className="grid grid-cols-2 gap-8">
+                {/* Before */}
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/5">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-white/30">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M8 8c2 2 4 0 4 4s-2 2-4 4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+                      <path d="M16 8c-2 2-4 0-4 4s2 2 4 4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+                    </svg>
+                  </div>
+                  <h4 className="mb-2 font-heading text-sm font-bold uppercase tracking-[1px] text-white/40">Before</h4>
+                  <ul className="space-y-1.5 text-xs text-white/30">
+                    <li>Swirl marks visible</li>
+                    <li>Dull, hazy finish</li>
+                    <li>Light scratches</li>
+                    <li>Oxidation present</li>
+                  </ul>
+                </div>
+
+                {/* After */}
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red/10">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-red">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <h4 className="mb-2 font-heading text-sm font-bold uppercase tracking-[1px] text-red">After</h4>
+                  <ul className="space-y-1.5 text-xs text-white/60">
+                    <li>Mirror-like clarity</li>
+                    <li>Deep, glossy finish</li>
+                    <li>Defects removed</li>
+                    <li>Showroom quality</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Divider arrow */}
+              <div className="mt-6 flex items-center justify-center gap-4">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-red">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              </div>
+
+              <p className="mt-4 text-center text-xs text-white/30">
+                Results speak for themselves under any lighting condition
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection className="mt-8 text-center">
             <Link
               href="/gallery"
-              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98] hover:scale-[1.03] active:scale-[0.98]"
             >
               View Gallery
             </Link>
@@ -459,13 +590,13 @@ export default function PaintCorrectionPage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Request a Quote
               </Link>
               <a
                 href="tel:0481998874"
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Call 0481 998 874
               </a>

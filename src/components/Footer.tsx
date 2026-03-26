@@ -7,6 +7,7 @@ const footerLinks = [
   { href: '/gallery', label: 'Gallery' },
   { href: '/ceramic-coating', label: 'Ceramic Coating' },
   { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ]

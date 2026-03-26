@@ -1,10 +1,52 @@
 import Link from 'next/link'
 import ServiceCard from '@/components/ServiceCard'
 import AnimatedSection from '@/components/AnimatedSection'
+import SectionDivider from '@/components/SectionDivider'
 import JsonLd from '@/components/JsonLd'
 import { services, addons } from '@/lib/data'
 import { CONTACT, OWNER, SITE_URL } from '@/lib/constants'
 import { breadcrumbSchema, serviceSchema, faqSchema } from '@/lib/seo'
+
+function getAddonIcon(name: string) {
+  const n = name.toLowerCase()
+  if (n.includes('headlight')) {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-blue">
+        <path d="M9 18h6M10 22h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M15 9a3 3 0 11-6 0 6 6 0 1112 0c0 2-1.5 3-3 4v1H9v-1c-1.5-1-3-2-3-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+  if (n.includes('dog') || n.includes('pet') || n.includes('hair')) {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-blue">
+        <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .137 1.217 1.5 2 2.5 2s1.868-.853 3-2c1.132-1.147 2-3.828 2-4.828zM14 5.172C14 3.782 15.577 2.679 17.5 3c2.823.47 4.113 6.006 4 7-.137 1.217-1.5 2-2.5 2s-1.868-.853-3-2c-1.132-1.147-2-3.828-2-4.828z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 14v.5M16 14v.5M11.25 16.25h1.5L12 17l-.75-.75z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4.42 11.247A13.152 13.152 0 004 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a13.152 13.152 0 00-.42-3.31" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+  if (n.includes('glass') || n.includes('hydro')) {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-blue">
+        <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+  if (n.includes('carpet') || n.includes('leather') || n.includes('protect')) {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-blue">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+  // Default sparkle
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-blue">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
 
 export const metadata = {
   title: 'Car Detailing Prices Brisbane | Mobile Packages from $99',
@@ -75,6 +117,11 @@ export default function ServicesPage() {
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
           <AnimatedSection>
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red/10">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-red">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
               What We Offer
             </p>
@@ -117,10 +164,19 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <SectionDivider variant="red" />
+
       {/* ── Detailed Service Breakdowns ── */}
       <section className="bg-dark py-24">
         <div className="mx-auto max-w-5xl px-6">
           <AnimatedSection className="mb-16 text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red/10">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-red">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M9 12h6M9 16h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </div>
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
               In Depth
             </p>
@@ -225,11 +281,14 @@ export default function ServicesPage() {
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
             {addons.map((addon, i) => (
               <AnimatedSection key={addon.name} delay={i * 0.08}>
-                <div className="rounded-lg border border-glass-border bg-dark-2 p-6 text-center transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
+                <div className="group rounded-lg border border-glass-border bg-dark-2 p-6 text-center transition-all duration-300 hover:border-blue/20 hover:-translate-y-1 hover:shadow-md hover:shadow-blue/5">
+                  <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-blue/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue/15">
+                    {getAddonIcon(addon.name)}
+                  </div>
                   <h3 className="mb-3 font-heading text-[0.7rem] font-bold uppercase tracking-[2px] text-white">
                     {addon.name}
                   </h3>
-                  <p className="mb-2 font-heading text-2xl font-bold text-blue">
+                  <p className="mb-2 font-heading text-2xl font-bold text-blue transition-colors duration-300 group-hover:text-blue-hover">
                     <span className="text-base font-medium text-blue/70">$</span>
                     {addon.price}
                   </p>
@@ -294,13 +353,13 @@ export default function ServicesPage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Request a Quote
               </Link>
               <a
                 href="tel:0481998874"
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Call 0481 998 874
               </a>

@@ -4,6 +4,156 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import type { Service } from '@/lib/data'
 
+function getFeatureIcon(feature: string) {
+  const f = feature.toLowerCase()
+
+  // Water / Wash
+  if (f.includes('wash') || f.includes('rinse') || f.includes('water')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+
+  // Vacuum / Dust
+  if (f.includes('vacuum') || f.includes('dust') || f.includes('blow')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+
+  // Windows / Glass
+  if (f.includes('window') || f.includes('glass')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
+        <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" strokeWidth="2" />
+        <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  // Wheels / Tyres
+  if (f.includes('wheel') || f.includes('tyre') || f.includes('tire') || f.includes('rim')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  // Polish / Wax / Shine / Sealant
+  if (f.includes('polish') || f.includes('wax') || f.includes('shine') || f.includes('gloss') || f.includes('sealant')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+
+  // Clay Bar / Hand treatment
+  if (f.includes('clay')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M18 11V6a2 2 0 00-2-2 2 2 0 00-2 2v0M14 10V4a2 2 0 00-2-2 2 2 0 00-2 2v6M10 10.5V6a2 2 0 00-2-2 2 2 0 00-2 2v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M18 8a2 2 0 012 2v7a5 5 0 01-5 5H9a5 5 0 01-5-5v-1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+
+  // Shampoo / Steam / Clean
+  if (f.includes('shampoo') || f.includes('steam') || f.includes('sanitise') || f.includes('deodor')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M17 3.34A10 10 0 0122 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  // Engine Bay / Gear
+  if (f.includes('engine')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
+        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+
+  // Headlight / Light / Bulb
+  if (f.includes('headlight') || f.includes('light')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M9 18h6M10 22h4M12 2v1M4.22 4.22l.71.71M1 12h1M4.22 19.78l.71-.71M23 12h-1M19.78 4.22l-.71.71M19.78 19.78l-.71-.71" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15 9a3 3 0 11-6 0 6 6 0 1112 0c0 2-1.5 3-3 4v1H9v-1c-1.5-1-3-2-3-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+
+  // Leather
+  if (f.includes('leather') || f.includes('upholstery')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="4" y="3" width="16" height="8" rx="2" stroke="currentColor" strokeWidth="2" />
+      </svg>
+    )
+  }
+
+  // Vinyl / Plastics / Dashboard / Trim / Dress
+  if (f.includes('vinyl') || f.includes('plastic') || f.includes('dashboard') || f.includes('trim') || f.includes('dress')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
+        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  // Door / Jam
+  if (f.includes('door')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="15" cy="12" r="1" fill="currentColor" />
+      </svg>
+    )
+  }
+
+  // Protection / Coating / Ceramic
+  if (f.includes('protect') || f.includes('coat') || f.includes('ceramic') || f.includes('hydro')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+
+  // Correction / Cut / Compound
+  if (f.includes('correct') || f.includes('cut') || f.includes('compound') || f.includes('sand')) {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+        <path d="M16 8l-8 8M8 8l8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  // Default: checkmark
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 text-red">
+      <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 interface ServiceCardProps {
   service: Service
 }
@@ -88,8 +238,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         {/* Features */}
         <ul className="space-y-2">
           {service.features.slice(0, 5).map((feature) => (
-            <li key={feature} className="flex items-start gap-2.5 text-sm text-white/50">
-              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red/60" />
+            <li key={feature} className="flex items-center gap-2.5 text-sm text-white/50">
+              {getFeatureIcon(feature)}
               {feature}
             </li>
           ))}

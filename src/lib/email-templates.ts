@@ -53,6 +53,7 @@ function emailWrapper(body: string): string {
           <!-- Header -->
           <tr>
             <td style="background-color:#0a0a0a;padding:28px 32px;text-align:center;border-radius:8px 8px 0 0;">
+              <img src="https://jrcdetailing.com.au/logo.png" alt="JRC Detailing" width="80" height="80" style="display:block;margin:0 auto 12px;border-radius:50%;" />
               <h1 style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-size:22px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#ffffff;">
                 JRC DETAILING
               </h1>

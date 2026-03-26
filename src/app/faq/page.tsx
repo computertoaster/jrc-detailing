@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
 import AnimatedSection from '@/components/AnimatedSection'
 import JsonLd from '@/components/JsonLd'
 import { faqSchema, breadcrumbSchema } from '@/lib/seo'
@@ -133,14 +134,14 @@ function FAQAccordionItem({ question, answer }: { question: string; answer: stri
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="rounded-lg border border-white/6 bg-dark-2 transition-colors hover:border-white/10">
+    <div className={`rounded-lg border bg-dark-2 transition-all duration-300 ${isOpen ? 'border-red/20 shadow-lg shadow-red/5' : 'border-white/6 hover:border-white/10'}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between gap-4 p-6 text-left"
         aria-expanded={isOpen}
       >
-        <h3 className="font-heading text-base lg:text-lg font-bold text-white pr-4">{question}</h3>
-        <svg
+        <h3 className={`font-heading text-base lg:text-lg font-bold pr-4 transition-colors duration-300 ${isOpen ? 'text-red' : 'text-white'}`}>{question}</h3>
+        <motion.svg
           width="20"
           height="20"
           viewBox="0 0 24 24"
@@ -149,16 +150,26 @@ function FAQAccordionItem({ question, answer }: { question: string; answer: stri
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={`flex-shrink-0 text-red transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          className="flex-shrink-0 text-red"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         >
           <polyline points="6 9 12 15 18 9" />
-        </svg>
+        </motion.svg>
       </button>
-      <div
-        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-      >
-        <p className="px-6 pb-6 text-base leading-relaxed text-white/50">{answer}</p>
-      </div>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="overflow-hidden"
+          >
+            <p className="px-6 pb-6 text-base leading-relaxed text-white/50">{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -247,13 +258,13 @@ export default function FAQPage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Get a Free Quote
               </Link>
               <a
                 href="tel:0481998874"
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Call 0481 998 874
               </a>

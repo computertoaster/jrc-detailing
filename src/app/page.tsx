@@ -5,6 +5,7 @@ import TrustBar from '@/components/TrustBar'
 import StatsRow from '@/components/StatsRow'
 import ServiceCard from '@/components/ServiceCard'
 import AnimatedSection from '@/components/AnimatedSection'
+import SectionDivider from '@/components/SectionDivider'
 import JsonLd from '@/components/JsonLd'
 import { services, addons, galleryImages, areas, polishingImage, ceramicBgImage } from '@/lib/data'
 import { CONTACT, OWNER, SITE_URL } from '@/lib/constants'
@@ -109,13 +110,13 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/about"
-                  className="inline-block rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+                  className="inline-block rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 hover:scale-[1.03] active:scale-[0.98]"
                 >
                   Learn More About Jesse
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                  className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
                 >
                   Get a Quote
                 </Link>
@@ -124,6 +125,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider variant="red" />
 
       {/* ── Services Overview ── */}
       <section className="bg-black py-24">
@@ -152,7 +155,7 @@ export default function HomePage() {
           <AnimatedSection className="mt-12 text-center">
             <Link
               href="/services"
-              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
             >
               View All Services
             </Link>
@@ -196,8 +199,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider variant="blue" />
+
       {/* ── Why JRC ── */}
-      <section className="bg-black py-24">
+      <section className="relative bg-black py-24 overflow-hidden">
+        {/* Decorative background orbs */}
+        <div
+          className="absolute -top-32 -left-32 h-64 w-64 rounded-full opacity-[0.03] pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(196,30,58,1) 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute -bottom-32 -right-32 h-64 w-64 rounded-full opacity-[0.03] pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(37,99,235,1) 0%, transparent 70%)' }}
+        />
         <div className="mx-auto max-w-7xl px-6">
           <AnimatedSection className="mb-16 text-center">
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
@@ -250,14 +264,15 @@ export default function HomePage() {
                   'The same standard trusted by BMW, Mercedes, Mazda, Ford, and more.',
                 icon: (
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 6L9 17l-5-5" />
+                    <circle cx="12" cy="8" r="7" />
+                    <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" />
                   </svg>
                 ),
               },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.12} direction="left">
                 <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 text-center transition-all duration-300 hover:border-blue/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue/5">
-                  <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 text-red transition-all duration-300 group-hover:bg-blue/10 group-hover:text-blue group-hover:scale-110">
+                  <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 text-red transition-all duration-500 group-hover:bg-blue/10 group-hover:text-blue group-hover:scale-110 group-hover:rotate-6">
                     {card.icon}
                   </div>
                   <h3 className="mb-3 font-heading text-sm font-bold uppercase tracking-[1px] text-white">
@@ -274,13 +289,15 @@ export default function HomePage() {
           <AnimatedSection className="mt-12 text-center">
             <Link
               href="/services"
-              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
             >
               View All Services
             </Link>
           </AnimatedSection>
         </div>
       </section>
+
+      <SectionDivider variant="red" />
 
       {/* ── Customer Reviews ── */}
       <section className="bg-dark py-24">
@@ -345,7 +362,7 @@ export default function HomePage() {
               href={CONTACT.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
             >
               See More on Instagram
             </a>
@@ -353,8 +370,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider variant="blue" />
+
       {/* ── Gallery Preview ── */}
-      <section className="bg-black py-24">
+      <section className="relative bg-black py-24 overflow-hidden">
+        {/* Decorative background orb */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full opacity-[0.02] pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(37,99,235,1) 0%, transparent 70%)' }}
+        />
         <div className="mx-auto max-w-7xl px-6">
           <AnimatedSection className="mb-16 text-center">
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
@@ -391,13 +415,15 @@ export default function HomePage() {
           <AnimatedSection className="mt-12 text-center">
             <Link
               href="/gallery"
-              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
             >
               View Full Gallery
             </Link>
           </AnimatedSection>
         </div>
       </section>
+
+      <SectionDivider variant="subtle" />
 
       {/* ── Ceramic CTA ── */}
       <section className="relative overflow-hidden py-32">
@@ -471,13 +497,13 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/ceramic-coating"
-                className="inline-block rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25"
+                className="inline-block rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Learn About Ceramic Coating
               </Link>
               <Link
                 href="/contact"
-                className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Get a Quote
               </Link>
@@ -522,7 +548,7 @@ export default function HomePage() {
           <AnimatedSection className="mt-12 text-center">
             <Link
               href="/areas"
-              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              className="inline-block rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
             >
               View All Areas
             </Link>
@@ -531,29 +557,91 @@ export default function HomePage() {
       </section>
 
       {/* ── Instagram CTA ── */}
-      <section className="bg-black py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <AnimatedSection>
-            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
-              Follow Along
-            </p>
-            <h2 className="mb-4 font-heading text-3xl font-extrabold md:text-4xl">
-              See the Latest Work
-            </h2>
-            <a
-              href={CONTACT.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-lg text-white/60 transition-colors duration-300 hover:text-blue"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-              </svg>
-              <span className="font-heading text-sm font-semibold tracking-wide">
-                {CONTACT.instagram}
-              </span>
-            </a>
-          </AnimatedSection>
+      <section className="relative bg-black py-24 overflow-hidden">
+        {/* Decorative background orb */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full opacity-[0.04] pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(196,30,58,1) 0%, transparent 70%)' }}
+        />
+
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            {/* Left: Instagram info */}
+            <AnimatedSection direction="left">
+              <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+                Follow Along
+              </p>
+              <h2 className="mb-4 font-heading text-3xl font-extrabold md:text-4xl">
+                See the Latest Work on Instagram
+              </h2>
+              <p className="mb-6 text-base leading-relaxed text-white/50">
+                Before-and-after transformations, ceramic coating results, detailing
+                tips, and behind-the-scenes content. Follow {CONTACT.instagram} for
+                regular updates straight from the detailing bay.
+              </p>
+
+              {/* Handle badge */}
+              <a
+                href={CONTACT.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mb-8 inline-flex items-center gap-4 rounded-lg border border-white/10 bg-white/5 px-6 py-4 transition-all duration-300 hover:border-red/30 hover:bg-red/5"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#f09433] via-[#e6683c] to-[#dc2743] text-white transition-transform duration-300 group-hover:scale-110">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-heading text-sm font-bold text-white">
+                    {CONTACT.instagram}
+                  </p>
+                  <p className="text-xs text-white/40">
+                    Follow for latest work
+                  </p>
+                </div>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="ml-auto text-white/30 transition-all duration-300 group-hover:text-red group-hover:translate-x-1"
+                >
+                  <path d="M7 17l9.2-9.2M17 17V7H7" />
+                </svg>
+              </a>
+
+              <div>
+                <a
+                  href={CONTACT.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 hover:scale-[1.03] active:scale-[0.98]"
+                >
+                  Follow on Instagram
+                </a>
+              </div>
+            </AnimatedSection>
+
+            {/* Right: Instagram embed with fallback */}
+            <AnimatedSection direction="right">
+              <div className="relative overflow-hidden rounded-lg border border-white/10 bg-dark-2">
+                <iframe
+                  src="https://www.instagram.com/jrc.detailing_/embed"
+                  width="100%"
+                  height="480"
+                  style={{ border: 'none', background: '#1a1a1a' }}
+                  loading="lazy"
+                  title="JRC Detailing Instagram feed"
+                  allow="encrypted-media"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
@@ -571,13 +659,13 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Get a Free Quote
               </Link>
               <a
                 href={CONTACT.phoneHref}
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Call {OWNER.firstName}
               </a>

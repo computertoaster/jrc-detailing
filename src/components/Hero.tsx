@@ -34,8 +34,23 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background with parallax + breathing scale */}
+      {/* Background video with parallax */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY, scale: bgScale }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={heroImage}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: 'brightness(0.2) saturate(0.7)' }}
+        >
+          <source
+            src="https://videos.pexels.com/video-files/3945336/3945336-uhd_2560_1440_25fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Fallback image for browsers that block autoplay */}
         <Image
           src={heroImage}
           alt="Premium car detailing"
@@ -44,6 +59,7 @@ export default function Hero() {
           priority
           sizes="100vw"
           quality={85}
+          style={{ filter: 'brightness(0.25)' }}
         />
       </motion.div>
 

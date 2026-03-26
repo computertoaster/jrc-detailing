@@ -246,8 +246,10 @@ export default function CeramicCoatingPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((benefit, i) => (
               <AnimatedSection key={benefit.title} delay={i * 0.08}>
-                <div className="rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
-                  <div className="mb-4 text-red">{benefit.icon}</div>
+                <div className="group rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-red/20 hover:-translate-y-1 hover:shadow-lg hover:shadow-red/5">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red/10 text-red transition-all duration-300 group-hover:scale-110 group-hover:bg-red/15">
+                    {benefit.icon}
+                  </div>
                   <h3 className="mb-2 font-heading text-base font-bold text-white">
                     {benefit.title}
                   </h3>
@@ -261,8 +263,57 @@ export default function CeramicCoatingPage() {
         </div>
       </section>
 
-      {/* ── The Process ── */}
+      {/* ── Protection Levels ── */}
       <section className="bg-black py-24">
+        <div className="mx-auto max-w-4xl px-6">
+          <AnimatedSection className="mb-16 text-center">
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              Comparison
+            </p>
+            <h2 className="mb-4 font-heading text-4xl font-extrabold md:text-5xl">
+              Protection Levels
+            </h2>
+            <p className="mx-auto max-w-xl text-base text-gray">
+              See how ceramic coating compares to wax and sealant for long-term protection.
+            </p>
+          </AnimatedSection>
+
+          <div className="space-y-6">
+            {[
+              { label: 'Carnauba Wax', duration: '4 to 8 weeks', percent: 15, colour: 'bg-white/20' },
+              { label: 'Paint Sealant', duration: '3 to 6 months', percent: 35, colour: 'bg-blue/40' },
+              { label: 'Ceramic Coating', duration: '2 to 5+ years', percent: 95, colour: 'bg-red' },
+            ].map((level, i) => (
+              <AnimatedSection key={level.label} delay={i * 0.1}>
+                <div className="rounded-lg border border-white/6 bg-dark-2 p-6">
+                  <div className="mb-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={i === 2 ? 'text-red' : 'text-white/40'}>
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className={`font-heading text-sm font-bold uppercase tracking-[1px] ${i === 2 ? 'text-white' : 'text-white/50'}`}>
+                        {level.label}
+                      </span>
+                    </div>
+                    <span className={`font-heading text-sm font-semibold ${i === 2 ? 'text-red' : 'text-white/40'}`}>
+                      {level.duration}
+                    </span>
+                  </div>
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-white/5">
+                    <div
+                      className={`h-full rounded-full ${level.colour} transition-all duration-700`}
+                      style={{ width: `${level.percent}%` }}
+                    />
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── The Process ── */}
+      <section className="bg-dark py-24">
         <div className="mx-auto max-w-4xl px-6">
           <AnimatedSection className="mb-16 text-center">
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
@@ -279,10 +330,12 @@ export default function CeramicCoatingPage() {
           <div className="space-y-6">
             {processSteps.map((step, i) => (
               <AnimatedSection key={step.step} delay={i * 0.06}>
-                <div className="flex gap-6 rounded-lg border border-white/6 bg-dark-2 p-6 transition-colors hover:border-white/10">
-                  {/* Step Number */}
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-xl font-bold text-red">
-                    {step.step}
+                <div className="group flex gap-6 rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-red/20 hover:shadow-md hover:shadow-red/5">
+                  {/* Step Number - Circular Badge */}
+                  <div className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center">
+                    <div className="absolute inset-0 rounded-full border-2 border-red/20 transition-all duration-300 group-hover:border-red/40" />
+                    <div className="absolute inset-1 rounded-full bg-red/10 transition-all duration-300 group-hover:bg-red/15" />
+                    <span className="relative font-heading text-xl font-bold text-red">{step.step}</span>
                   </div>
 
                   {/* Content */}
@@ -411,16 +464,16 @@ export default function CeramicCoatingPage() {
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
                   href="/contact"
-                  className="rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25"
+                  className="rounded-sm bg-blue px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-black transition-all duration-300 hover:bg-blue-hover hover:shadow-lg hover:shadow-blue/25 hover:scale-[1.03] active:scale-[0.98]"
                 >
                   Request a Quote
                 </Link>
-                <Link
-                  href="/contact"
-                  className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                <a
+                  href="tel:0481998874"
+                  className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
                 >
-                  Request a Quote
-                </Link>
+                  Call 0481 998 874
+                </a>
               </div>
             </div>
           </AnimatedSection>
@@ -475,13 +528,13 @@ export default function CeramicCoatingPage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Get a Free Quote
               </Link>
               <a
                 href="tel:0481998874"
-                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Call 0481 998 874
               </a>
