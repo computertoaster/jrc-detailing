@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -9,6 +9,7 @@ import { NAV_LINKS } from '@/lib/constants'
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +30,53 @@ export default function Navigation() {
     }
   }, [mobileOpen])
 
+  // Close on Escape key
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape' && mobileOpen) {
+      setMobileOpen(false)
+    }
+  }, [mobileOpen])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
+
+  // Focus trap in mobile menu
+  useEffect(() => {
+    if (!mobileOpen || !mobileMenuRef.current) return
+    const menu = mobileMenuRef.current
+    const focusableElements = menu.querySelectorAll<HTMLElement>(
+      'a[href], button, [tabindex]:not([tabindex="-1"])'
+    )
+    if (focusableElements.length === 0) return
+
+    const firstEl = focusableElements[0]
+    const lastEl = focusableElements[focusableElements.length - 1]
+
+    const trapFocus = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          e.preventDefault()
+          lastEl.focus()
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          e.preventDefault()
+          firstEl.focus()
+        }
+      }
+    }
+
+    menu.addEventListener('keydown', trapFocus)
+    firstEl.focus()
+    return () => menu.removeEventListener('keydown', trapFocus)
+  }, [mobileOpen])
+
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-black/92 backdrop-blur-3xl border-b border-white/6'
@@ -77,19 +123,24 @@ export default function Navigation() {
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="relative z-10 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          role="button"
         >
           <span
+            aria-hidden="true"
             className={`h-[1.5px] w-6 bg-white transition-all duration-300 ${
               mobileOpen ? 'translate-y-[4.5px] rotate-45' : ''
             }`}
           />
           <span
+            aria-hidden="true"
             className={`h-[1.5px] w-6 bg-white transition-all duration-300 ${
               mobileOpen ? 'opacity-0' : ''
             }`}
           />
           <span
+            aria-hidden="true"
             className={`h-[1.5px] w-6 bg-white transition-all duration-300 ${
               mobileOpen ? '-translate-y-[4.5px] -rotate-45' : ''
             }`}
@@ -113,11 +164,14 @@ export default function Navigation() {
 
             {/* Panel */}
             <motion.div
+              ref={mobileMenuRef}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
               className="fixed top-0 right-0 z-50 flex h-full w-80 flex-col bg-dark/98 backdrop-blur-3xl border-l border-white/6"
+              role="dialog"
+              aria-label="Mobile navigation menu"
             >
               <div className="flex items-center justify-end px-6 py-5">
                 <button

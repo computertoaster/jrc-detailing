@@ -1,13 +1,18 @@
 import Link from 'next/link'
 import ServiceCard from '@/components/ServiceCard'
 import AnimatedSection from '@/components/AnimatedSection'
+import JsonLd from '@/components/JsonLd'
 import { services, addons } from '@/lib/data'
-import { CONTACT, OWNER } from '@/lib/constants'
+import { CONTACT, OWNER, SITE_URL } from '@/lib/constants'
+import { breadcrumbSchema, serviceSchema, faqSchema } from '@/lib/seo'
 
 export const metadata = {
   title: 'Services & Pricing',
   description:
-    'Professional car detailing packages from $99. Mini detail, full detail, prestige detail, ceramic coating, paint correction. Mobile service across Victoria Point, Redlands & Brisbane South.',
+    'Professional car detailing packages from $99. Mini detail $99, interior detail $189, full cut and polish $320, full detail $370, prestige detail $550, ceramic coating custom quote. Mobile service across Victoria Point, Redlands and Brisbane South.',
+  alternates: {
+    canonical: '/services',
+  },
   openGraph: {
     title: 'Services & Pricing | JRC Detailing',
     description:
@@ -46,6 +51,17 @@ const faqs = [
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Services', url: `${SITE_URL}/services` },
+        ])}
+      />
+      {services.map((service) => (
+        <JsonLd key={service.slug} data={serviceSchema(service)} />
+      ))}
+      <JsonLd data={faqSchema(faqs)} />
+
       {/* ── Hero Banner ── */}
       <section className="relative overflow-hidden bg-dark pt-36 pb-20">
         {/* Gradient accent */}

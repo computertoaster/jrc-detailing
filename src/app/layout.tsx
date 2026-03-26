@@ -4,7 +4,9 @@ import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import JsonLd from '@/components/JsonLd'
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
+import { localBusinessSchema, organizationSchema } from '@/lib/seo'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -21,6 +23,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     template: `%s | ${SITE_NAME}`,
     default: `${SITE_NAME} | Premium Mobile Car Detailing | Victoria Point & Brisbane South`,
@@ -38,6 +41,9 @@ export const metadata: Metadata = {
     'interior detailing redlands',
     'mobile car wash victoria point',
   ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: `${SITE_NAME} | Premium Mobile Car Detailing`,
     description: SITE_DESCRIPTION,
@@ -46,11 +52,23 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URL,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE_NAME} | Premium Mobile Car Detailing`,
+    description: SITE_DESCRIPTION,
+  },
   robots: {
     index: true,
     follow: true,
   },
-  metadataBase: new URL(SITE_URL),
+  verification: {
+    google: 'PLACEHOLDER',
+  },
+  other: {
+    'geo.region': 'AU-QLD',
+    'geo.placename': 'Victoria Point',
+    'theme-color': '#c41e3a',
+  },
 }
 
 export default function RootLayout({
@@ -59,10 +77,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
+    <html lang="en-AU" className={`${montserrat.variable} ${inter.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://images.pexels.com" />
+      </head>
       <body className="bg-black font-body text-white antialiased">
+        <a href="#main-content" className="skip-to-content">
+          Skip to content
+        </a>
+        <JsonLd data={localBusinessSchema()} />
+        <JsonLd data={organizationSchema()} />
         <Navigation />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <FloatingCTA />
       </body>

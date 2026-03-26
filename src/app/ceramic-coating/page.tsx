@@ -1,13 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import AnimatedSection from '@/components/AnimatedSection'
+import JsonLd from '@/components/JsonLd'
 import { services, ceramicBgImage } from '@/lib/data'
-import { CONTACT, OWNER, DEALER_BRANDS } from '@/lib/constants'
+import { CONTACT, OWNER, DEALER_BRANDS, SITE_URL } from '@/lib/constants'
+import { breadcrumbSchema, serviceSchema, faqSchema, howToSchema } from '@/lib/seo'
 
 export const metadata = {
   title: 'Ceramic Coating',
   description:
     'Professional ceramic coating in Victoria Point & Brisbane South. Multi-year paint protection with full paint correction. Dealership trusted. Hydrophobic, UV resistant, showroom gloss. Call for a custom quote.',
+  alternates: {
+    canonical: '/ceramic-coating',
+  },
   openGraph: {
     title: 'Ceramic Coating Brisbane | Paint Protection | JRC Detailing',
     description:
@@ -146,8 +151,29 @@ const ceramicFaqs = [
 ]
 
 export default function CeramicCoatingPage() {
+  const ceramicServiceData = services.find((s) => s.slug === 'ceramic-coating')!
+
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Ceramic Coating', url: `${SITE_URL}/ceramic-coating` },
+        ])}
+      />
+      <JsonLd data={serviceSchema(ceramicServiceData)} />
+      <JsonLd data={faqSchema(ceramicFaqs)} />
+      <JsonLd
+        data={howToSchema(
+          'Professional Ceramic Coating Process',
+          'A six-step ceramic coating process used by JRC Detailing to protect your vehicle paintwork for years.',
+          processSteps.map((step) => ({
+            name: step.title,
+            text: step.description,
+          }))
+        )}
+      />
+
       {/* ── Hero ── */}
       <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
         {/* Background */}

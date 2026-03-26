@@ -1,0 +1,363 @@
+import Link from 'next/link'
+import AnimatedSection from '@/components/AnimatedSection'
+import JsonLd from '@/components/JsonLd'
+import { breadcrumbSchema, faqSchema } from '@/lib/seo'
+import { CONTACT, OWNER } from '@/lib/constants'
+
+export const metadata = {
+  title: 'Interior Detailing',
+  description:
+    'Professional interior car detailing in Victoria Point, Redlands & Brisbane South. Steam cleaning, leather care, odour removal, pet hair removal. From $189. JRC Detailing.',
+  alternates: { canonical: '/interior-detailing' },
+  openGraph: {
+    title: 'Interior Car Detailing Brisbane | Steam Clean | JRC Detailing',
+    description:
+      'Professional interior detailing in Victoria Point & Brisbane South. Steam clean seats, carpets, leather care, odour removal. From $189.',
+  },
+}
+
+const inclusions = [
+  {
+    title: 'Full Vacuum',
+    description:
+      'Every surface is vacuumed thoroughly, including under seats, between crevices, boot, and door pockets. Compressed air blows out dust from vents and tight spaces.',
+  },
+  {
+    title: 'Steam Cleaning',
+    description:
+      'High-temperature steam lifts embedded dirt, stains, and bacteria from fabric seats, carpets, and floor mats. Steam sanitises without harsh chemicals and dries faster than traditional shampooing.',
+  },
+  {
+    title: 'Vinyl & Plastics',
+    description:
+      'All dashboard, console, door cards, and trim pieces are cleaned and dressed. UV-protective dressing prevents fading and cracking from Queensland sun exposure.',
+  },
+  {
+    title: 'Windows Inside & Out',
+    description:
+      'All glass surfaces are cleaned streak-free inside and out for maximum visibility and a polished appearance.',
+  },
+  {
+    title: 'Interior Deodoriser',
+    description:
+      'A professional deodoriser neutralises odours at the source rather than masking them. Your cabin smells fresh and clean without overpowering fragrances.',
+  },
+]
+
+const specialistServices = [
+  {
+    title: 'Leather Care',
+    description:
+      'Leather seats and surfaces receive a dedicated cleaning and conditioning treatment. The cleaner removes body oils, grime, and dye transfer without damaging the leather. The conditioner replenishes moisture, prevents cracking, and maintains a natural, supple feel. Regular leather care extends the life of your seats significantly.',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 6L9 17l-5-5" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Odour Removal',
+    description:
+      'Persistent odours from food, smoke, mildew, or spills are treated at the source. Jesse identifies where the smell originates, cleans the affected area, and applies professional-grade deodorising treatments. For severe cases, an ozone treatment can be arranged to eliminate odours completely.',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Pet Hair Removal',
+    description:
+      'Pet hair embeds deep into fabric seats, carpets, and floor mats. JRC Detailing uses specialised tools and techniques to extract pet hair from every surface. This is available as an add-on to any interior service for $40.',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      </svg>
+    ),
+  },
+]
+
+const steamVsShampooBenefits = [
+  { benefit: 'Drying time', steam: 'Hours (much faster)', shampoo: 'Up to 24 hours' },
+  { benefit: 'Chemical use', steam: 'Minimal to none', shampoo: 'Cleaning solutions required' },
+  { benefit: 'Sanitisation', steam: 'Kills bacteria and dust mites', shampoo: 'Cleans surface only' },
+  { benefit: 'Stain removal', steam: 'Effective on most stains', shampoo: 'Effective on most stains' },
+  { benefit: 'Suitable for leather', steam: 'Yes, with care', shampoo: 'No, can damage leather' },
+  { benefit: 'Odour removal', steam: 'Neutralises at source', shampoo: 'Can leave damp smell' },
+]
+
+const interiorFaqs = [
+  {
+    question: 'How much does interior detailing cost?',
+    answer:
+      'The Interior Detail is $189. It includes full vacuum, steam or shampoo of seats and carpets, vinyl and plastics cleaned and dressed, windows inside and out, and interior deodoriser. Pet hair removal is an additional $40 add-on.',
+  },
+  {
+    question: 'How long does an interior detail take?',
+    answer:
+      'An interior detail typically takes 2 to 3 hours depending on the size and condition of the vehicle. Heavily soiled interiors or vehicles with pet hair may take longer.',
+  },
+  {
+    question: 'Do you steam clean or shampoo?',
+    answer:
+      'JRC Detailing primarily uses steam cleaning as it is faster-drying, chemical-free, and sanitises the surface. Shampooing is used when specific stains require a targeted cleaning agent. Jesse selects the best method based on your vehicle\'s interior materials and condition.',
+  },
+  {
+    question: 'Can you remove pet hair from my car?',
+    answer:
+      'Yes. Pet hair removal is available as an add-on for $40. Jesse uses specialised tools to extract embedded pet hair from fabric seats, carpets, boot liners, and floor mats.',
+  },
+  {
+    question: 'Can you remove smoke smell from a car?',
+    answer:
+      'Yes. Smoke odour is treated with deep cleaning of all soft surfaces, headliner cleaning, and professional deodorising treatments. For severe smoke damage, an ozone treatment may be recommended for complete elimination.',
+  },
+  {
+    question: 'Do you clean leather seats?',
+    answer:
+      'Yes. Leather seats are cleaned with a pH-balanced leather cleaner and conditioned to restore suppleness and prevent cracking. Leather care is included in the interior detail for vehicles with leather seats.',
+  },
+]
+
+export default function InteriorDetailingPage() {
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', url: 'https://jrcdetailing.com.au' },
+          { name: 'Interior Detailing', url: 'https://jrcdetailing.com.au/interior-detailing' },
+        ])}
+      />
+      <JsonLd data={faqSchema(interiorFaqs)} />
+
+      {/* ── Hero ── */}
+      <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-dark via-black to-black" />
+
+        {/* Red glow */}
+        <div
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full opacity-20 pointer-events-none"
+          style={{
+            background: 'radial-gradient(circle, rgba(196,30,58,0.25) 0%, transparent 70%)',
+          }}
+        />
+
+        <div className="relative z-10 mx-auto max-w-4xl px-6 pt-32 pb-20 text-center">
+          <AnimatedSection>
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              Deep Clean
+            </p>
+            <h1 className="mb-6 font-heading text-5xl font-extrabold md:text-7xl">
+              Interior Detailing
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60">
+              Professional interior detailing that transforms your cabin from tired to fresh.
+              Steam cleaning, leather care, odour removal, and meticulous attention to every
+              surface. From $189 with {OWNER.firstName}.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── What's Included ── */}
+      <section className="bg-dark py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <AnimatedSection className="mb-16 text-center">
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              The Package
+            </p>
+            <h2 className="mb-6 font-heading text-4xl font-extrabold md:text-5xl">
+              What&apos;s Included in an Interior Detail
+            </h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/60">
+              The Interior Detail ($189) covers every surface inside your vehicle. Here is
+              exactly what you get.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {inclusions.map((item, i) => (
+              <AnimatedSection key={item.title} delay={i * 0.06}>
+                <div className="rounded-lg border border-white/6 bg-dark-2 p-6 transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
+                  <h3 className="mb-2 font-heading text-sm font-bold text-white">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/45">{item.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Steam vs Shampoo ── */}
+      <section className="bg-black py-24">
+        <div className="mx-auto max-w-4xl px-6">
+          <AnimatedSection className="mb-16 text-center">
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              Methods
+            </p>
+            <h2 className="mb-6 font-heading text-4xl font-extrabold md:text-5xl">
+              Steam Cleaning vs Shampooing
+            </h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/60">
+              JRC Detailing uses steam cleaning as the primary method for interior fabrics.
+              Here is how the two methods compare.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection>
+            <div className="overflow-x-auto rounded-lg border border-white/6">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-white/6 bg-dark-2">
+                    <th className="p-4 text-left font-heading text-xs font-bold uppercase tracking-[2px] text-white/60">
+                      Factor
+                    </th>
+                    <th className="p-4 text-center font-heading text-xs font-bold uppercase tracking-[2px] text-red">
+                      Steam
+                    </th>
+                    <th className="p-4 text-center font-heading text-xs font-bold uppercase tracking-[2px] text-white/40">
+                      Shampoo
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {steamVsShampooBenefits.map((row, i) => (
+                    <tr
+                      key={row.benefit}
+                      className={`border-b border-white/4 ${i % 2 === 0 ? 'bg-dark-2/50' : ''}`}
+                    >
+                      <td className="p-4 text-sm font-medium text-white/60">{row.benefit}</td>
+                      <td className="p-4 text-center text-sm text-white/50">{row.steam}</td>
+                      <td className="p-4 text-center text-sm text-white/40">{row.shampoo}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── Specialist Services ── */}
+      <section className="bg-dark py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <AnimatedSection className="mb-16 text-center">
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              Specialist Care
+            </p>
+            <h2 className="mb-6 font-heading text-4xl font-extrabold md:text-5xl">
+              Beyond the Standard Clean
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {specialistServices.map((service, i) => (
+              <AnimatedSection key={service.title} delay={i * 0.08}>
+                <div className="rounded-lg border border-white/6 bg-dark-2 p-8 transition-all duration-300 hover:border-white/12 hover:-translate-y-1">
+                  <div className="mb-4 text-red">{service.icon}</div>
+                  <h3 className="mb-3 font-heading text-base font-bold text-white">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/45">{service.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Pricing ── */}
+      <section className="bg-black py-24">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <AnimatedSection>
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              Investment
+            </p>
+            <h2 className="mb-8 font-heading text-4xl font-extrabold md:text-5xl">Pricing</h2>
+
+            <div className="rounded-lg border border-white/6 bg-dark-2 p-10 mb-6">
+              <h3 className="mb-2 font-heading text-2xl font-bold text-white">Interior Detail</h3>
+              <p className="mb-4 font-heading text-4xl font-extrabold text-red">$189</p>
+              <p className="mx-auto mb-6 max-w-lg text-sm leading-relaxed text-white/50">
+                Full vacuum, steam or shampoo seats and carpets, vinyl and plastics cleaned and
+                dressed, windows inside and out, interior deodoriser. 2 to 3 hours on-site.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-white/6 bg-dark-2 p-6">
+              <h4 className="mb-4 font-heading text-sm font-bold uppercase tracking-[2px] text-white/60">
+                Add-Ons
+              </h4>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="flex items-center justify-between rounded border border-white/4 px-4 py-3">
+                  <span className="text-sm text-white/50">Pet Hair Removal</span>
+                  <span className="font-heading text-sm font-bold text-red">$40</span>
+                </div>
+                <div className="flex items-center justify-between rounded border border-white/4 px-4 py-3">
+                  <span className="text-sm text-white/50">Carpet &amp; Leather Protection</span>
+                  <span className="font-heading text-sm font-bold text-red">$120</span>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="bg-dark py-24">
+        <div className="mx-auto max-w-3xl px-6">
+          <AnimatedSection className="mb-16 text-center">
+            <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
+              Common Questions
+            </p>
+            <h2 className="mb-4 font-heading text-4xl font-extrabold md:text-5xl">
+              Interior Detailing FAQ
+            </h2>
+          </AnimatedSection>
+
+          <div className="space-y-6">
+            {interiorFaqs.map((faq, i) => (
+              <AnimatedSection key={faq.question} delay={i * 0.06}>
+                <div className="rounded-lg border border-white/6 bg-dark-2 p-6">
+                  <h3 className="mb-3 font-heading text-sm font-bold text-white">
+                    {faq.question}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/50">{faq.answer}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="bg-black py-24">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <AnimatedSection>
+            <h2 className="mb-6 font-heading text-4xl font-extrabold text-red md:text-5xl">
+              Refresh Your Interior
+            </h2>
+            <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60">
+              Whether it is a quick refresh or a deep clean for a neglected cabin, {OWNER.firstName}{' '}
+              will bring it back to life. Book your interior detail today.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/contact"
+                className="rounded-sm bg-red px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-red-hover hover:shadow-lg hover:shadow-red/25"
+              >
+                Book Now
+              </Link>
+              <a
+                href={CONTACT.phoneHref}
+                className="rounded-sm border border-white/20 px-8 py-3 font-heading text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              >
+                Call {CONTACT.phone}
+              </a>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+    </>
+  )
+}

@@ -2,8 +2,10 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import AnimatedSection from '@/components/AnimatedSection'
+import JsonLd from '@/components/JsonLd'
 import { areas, services } from '@/lib/data'
-import { CONTACT, OWNER } from '@/lib/constants'
+import { CONTACT, OWNER, SITE_URL } from '@/lib/constants'
+import { breadcrumbSchema, localBusinessSchema, serviceSchema } from '@/lib/seo'
 
 interface SuburbPageProps {
   params: Promise<{ suburb: string }>
@@ -20,7 +22,14 @@ export async function generateMetadata({ params }: SuburbPageProps): Promise<Met
 
   return {
     title: `Car Detailing ${area.name} | Mobile Detailing`,
-    description: `Professional mobile car detailing in ${area.name}. Ceramic coating, paint correction, interior detail. 7+ years experience. Based in Victoria Point, servicing ${area.region}.`,
+    description: `Professional mobile car detailing in ${area.name}. Ceramic coating, paint correction, interior detail from $99. 7+ years experience. Based in Victoria Point, servicing ${area.region}. Call 0481 998 874.`,
+    alternates: {
+      canonical: `/areas/${area.slug}`,
+    },
+    other: {
+      'geo.region': 'AU-QLD',
+      'geo.placename': area.name,
+    },
   }
 }
 
@@ -36,6 +45,18 @@ export default async function SuburbPage({ params }: SuburbPageProps) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Service Areas', url: `${SITE_URL}/areas` },
+          { name: area.name, url: `${SITE_URL}/areas/${area.slug}` },
+        ])}
+      />
+      <JsonLd data={localBusinessSchema()} />
+      {services.map((service) => (
+        <JsonLd key={service.slug} data={serviceSchema(service)} />
+      ))}
+
       {/* Breadcrumb */}
       <section className="bg-black pb-4 pt-28 md:pt-36">
         <div className="mx-auto max-w-6xl px-6">

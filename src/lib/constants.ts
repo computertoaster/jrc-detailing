@@ -1,12 +1,12 @@
 export const SITE_NAME = 'JRC Detailing'
 export const SITE_TAGLINE = 'Premium Mobile Car Detailing'
 export const SITE_DESCRIPTION = 'Premium mobile car detailing in Victoria Point, Redlands & Brisbane South. Ceramic coating, paint correction, interior detailing. 7+ years experience. Trusted by BMW, Mercedes & major dealerships.'
-export const SITE_URL = 'https://jrcdetailing.vercel.app'
+export const SITE_URL = 'https://jrcdetailing.com.au'
 
 export const CONTACT = {
   phone: '0481 998 874',
   phoneHref: 'tel:0481998874',
-  email: 'jesse_curtain@yahoo.com',
+  email: 'jesse@jrcdetailing.com.au',
   instagram: '@jrc.detailing_',
   instagramUrl: 'https://www.instagram.com/jrc.detailing_/',
 } as const

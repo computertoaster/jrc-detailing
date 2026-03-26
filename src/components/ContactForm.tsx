@@ -13,6 +13,7 @@ export default function ContactForm() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -22,6 +23,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
+    setSubmitError(false)
     setSubmitted(true)
 
     setTimeout(() => {
@@ -44,36 +46,46 @@ export default function ContactForm() {
     'mb-2 block font-heading text-[0.6rem] font-semibold uppercase tracking-[2px] text-gray'
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      {/* Status announcements for screen readers */}
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        {submitted && 'Your enquiry has been sent successfully.'}
+        {submitError && 'There was an error sending your enquiry. Please try again.'}
+      </div>
+
       {/* Name + Phone */}
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className={labelClasses}>
+          <label htmlFor="contact-name" className={labelClasses}>
             Name
           </label>
           <input
             type="text"
-            id="name"
+            id="contact-name"
             name="name"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Your name"
             required
+            aria-required="true"
             className={inputClasses}
           />
         </div>
         <div>
-          <label htmlFor="phone" className={labelClasses}>
+          <label htmlFor="contact-phone" className={labelClasses}>
             Phone
           </label>
           <input
             type="tel"
-            id="phone"
+            id="contact-phone"
             name="phone"
+            autoComplete="tel"
             value={formData.phone}
             onChange={handleChange}
             placeholder="04XX XXX XXX"
             required
+            aria-required="true"
             className={inputClasses}
           />
         </div>
@@ -81,13 +93,14 @@ export default function ContactForm() {
 
       {/* Email */}
       <div>
-        <label htmlFor="email" className={labelClasses}>
+        <label htmlFor="contact-email" className={labelClasses}>
           Email
         </label>
         <input
           type="email"
-          id="email"
+          id="contact-email"
           name="email"
+          autoComplete="email"
           value={formData.email}
           onChange={handleChange}
           placeholder="your@email.com"
@@ -98,11 +111,11 @@ export default function ContactForm() {
       {/* Service + Vehicle */}
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="service" className={labelClasses}>
+          <label htmlFor="contact-service" className={labelClasses}>
             Service
           </label>
           <select
-            id="service"
+            id="contact-service"
             name="service"
             value={formData.service}
             onChange={handleChange}
@@ -119,12 +132,12 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="vehicle" className={labelClasses}>
+          <label htmlFor="contact-vehicle" className={labelClasses}>
             Vehicle
           </label>
           <input
             type="text"
-            id="vehicle"
+            id="contact-vehicle"
             name="vehicle"
             value={formData.vehicle}
             onChange={handleChange}
@@ -136,11 +149,11 @@ export default function ContactForm() {
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className={labelClasses}>
+        <label htmlFor="contact-message" className={labelClasses}>
           Message
         </label>
         <textarea
-          id="message"
+          id="contact-message"
           name="message"
           value={formData.message}
           onChange={handleChange}

@@ -5,11 +5,34 @@ import TrustBar from '@/components/TrustBar'
 import StatsRow from '@/components/StatsRow'
 import ServiceCard from '@/components/ServiceCard'
 import AnimatedSection from '@/components/AnimatedSection'
+import JsonLd from '@/components/JsonLd'
 import { services, addons, galleryImages, areas, polishingImage, ceramicBgImage } from '@/lib/data'
-import { CONTACT, OWNER } from '@/lib/constants'
+import { CONTACT, OWNER, SITE_URL } from '@/lib/constants'
+import { breadcrumbSchema, serviceSchema, faqSchema } from '@/lib/seo'
+
+const homeFaqs = [
+  {
+    question: 'What areas does JRC Detailing service?',
+    answer:
+      'JRC Detailing is a fully mobile service covering Victoria Point, Cleveland, Capalaba, Redland Bay, Thornlands, Wellington Point, Ormiston, Alexandra Hills, Birkdale, Wynnum, Manly, and greater Brisbane South. Jesse brings everything needed directly to your location.',
+  },
+  {
+    question: 'How do I book a mobile detail?',
+    answer:
+      'You can book by calling 0481 998 874, sending a message through the contact form, or reaching out via Instagram @jrc.detailing_. Jesse will get back to you with a tailored quote for your vehicle.',
+  },
+  {
+    question: 'What is included in a full detail?',
+    answer:
+      'The Full Detail ($370) includes a thorough interior detail with shampoo and steam cleaning, exterior wash, 1-stage polish, wax protection, door jams cleaned, and wheels dressed. It is the most popular package for a complete inside-and-out transformation.',
+  },
+]
 
 export const metadata = {
   title: 'Premium Mobile Car Detailing | Victoria Point & Brisbane South',
+  alternates: {
+    canonical: '/',
+  },
 }
 
 export default function HomePage() {
@@ -18,6 +41,12 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: SITE_URL }])} />
+      <JsonLd data={faqSchema(homeFaqs)} />
+      {topServices.map((service) => (
+        <JsonLd key={service.slug} data={serviceSchema(service)} />
+      ))}
+
       {/* ── Hero ── */}
       <Hero />
 

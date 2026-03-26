@@ -7,6 +7,7 @@ const footerLinks = [
   { href: '/gallery', label: 'Gallery' },
   { href: '/ceramic-coating', label: 'Ceramic' },
   { href: '/about', label: 'About' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -26,7 +27,7 @@ export default function Footer() {
         </div>
 
         {/* Nav Links */}
-        <div className="flex flex-wrap items-center justify-center gap-8 mb-8">
+        <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-8 mb-8">
           {footerLinks.map((link) => (
             <Link
               key={link.href}
@@ -36,7 +37,7 @@ export default function Footer() {
               {link.label}
             </Link>
           ))}
-        </div>
+        </nav>
 
         {/* Tagline */}
         <p className="text-center font-heading text-[0.7rem] font-medium uppercase tracking-[3px] text-white/30 mb-3">
@@ -72,10 +73,16 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-red"
+            aria-label={`Follow JRC Detailing on Instagram ${CONTACT.instagram}`}
           >
             {CONTACT.instagram}
           </a>
         </div>
+
+        {/* Business Info */}
+        <p className="text-center text-[0.7rem] text-white/20 mb-4">
+          {SITE_NAME} | {OWNER.location} | {CONTACT.phone} | {CONTACT.email}
+        </p>
 
         {/* Copyright */}
         <p className="text-center text-[0.7rem] text-white/15">
