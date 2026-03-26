@@ -271,7 +271,7 @@ export default function HomePage() {
               },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.12} direction="left">
-                <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 text-center transition-all duration-300 hover:border-blue/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue/5">
+                <div className="group flex h-full flex-col items-center rounded-lg border border-white/6 bg-dark-2 p-8 text-center transition-all duration-300 hover:border-blue/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue/5">
                   <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 text-red transition-all duration-500 group-hover:bg-blue/10 group-hover:text-blue group-hover:scale-110 group-hover:rotate-6">
                     {card.icon}
                   </div>

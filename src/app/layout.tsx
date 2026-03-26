@@ -64,6 +64,10 @@ export const metadata: Metadata = {
   verification: {
     google: 'PLACEHOLDER',
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   other: {
     'geo.region': 'AU-QLD',
     'geo.placename': 'Victoria Point',

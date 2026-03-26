@@ -162,7 +162,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   const hasPrice = service.price !== null
 
   return (
-    <Link href={`/services#${service.slug}`} className="group block">
+    <Link href={`/services#${service.slug}`} className="group block h-full">
       <motion.div
         whileHover={{
           y: -6,
@@ -171,7 +171,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] },
         }}
         style={{ transformPerspective: 800 }}
-        className={`relative overflow-hidden rounded-lg border bg-dark-2 p-6 transition-all duration-500 hover:shadow-xl ${
+        className={`relative flex h-full flex-col overflow-hidden rounded-lg border bg-dark-2 p-6 transition-all duration-500 hover:shadow-xl ${
           service.featured
             ? 'border-red/30 hover:shadow-red/15'
             : 'border-white/6 hover:border-blue/25 hover:shadow-blue/10'
@@ -236,7 +236,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         </p>
 
         {/* Features */}
-        <ul className="space-y-2">
+        <ul className="mt-auto space-y-2">
           {service.features.slice(0, 5).map((feature) => (
             <li key={feature} className="flex items-center gap-2.5 text-sm text-white/50">
               {getFeatureIcon(feature)}

@@ -129,18 +129,18 @@ export const areas: Area[] = [
 ]
 
 export const galleryImages: GalleryImage[] = [
-  { src: 'https://images.unsplash.com/photo-1749394043423-9073b4e69803?w=1200&q=80&fit=crop', alt: 'Black BMW under dramatic studio lighting', label: 'Showroom Finish', wide: true },
+  { src: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200&q=80&fit=crop', alt: 'BMW M4 Competition in showroom finish', label: 'Showroom Finish', wide: true },
   { src: 'https://images.unsplash.com/photo-1565689876115-23f4019e888d?w=800&q=80&fit=crop', alt: 'Water beading on ceramic coated paint', label: 'Ceramic Coating' },
   { src: 'https://images.pexels.com/photos/5233259/pexels-photo-5233259.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Machine polishing a car panel', label: 'Paint Correction' },
-  { src: 'https://images.unsplash.com/photo-1698079601665-4b843a90638e?w=800&q=80&fit=crop', alt: 'Hand waxing a sports car in a garage', label: 'Hand Polish' },
-  { src: 'https://images.pexels.com/photos/4876648/pexels-photo-4876648.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Car covered in thick snow foam', label: 'Foam Wash' },
-  { src: 'https://images.unsplash.com/photo-1704226840161-5718a7894bf0?w=1200&q=80&fit=crop', alt: 'Black car with glowing lights in the dark', label: 'Luxury Vehicles', wide: true },
-  { src: 'https://images.unsplash.com/photo-1611264327630-8090373c8cef?w=800&q=80&fit=crop', alt: 'Black leather interior with red stitching detail', label: 'Interior Detail' },
-  { src: 'https://images.unsplash.com/photo-1578245601613-02b9b19cebcb?w=800&q=80&fit=crop', alt: 'BMW adaptive LED headlight close-up', label: 'Headlight Restoration' },
-  { src: 'https://images.unsplash.com/photo-1760161339261-56487b766a17?w=800&q=80&fit=crop', alt: 'Premium quilted leather car interior', label: 'Prestige Interior' },
-  { src: 'https://images.unsplash.com/photo-1669625408549-0e91299e277c?w=1200&q=80&fit=crop', alt: 'Close-up of dark car body with perfect paint finish', label: 'Flawless Paint', wide: true },
+  { src: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3b?w=800&q=80&fit=crop', alt: 'Car covered in thick snow foam', label: 'Foam Wash' },
+  { src: 'https://images.pexels.com/photos/4876648/pexels-photo-4876648.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Car being detailed with foam cannon', label: 'Exterior Detail' },
+  { src: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=80&fit=crop', alt: 'Luxury car at night with perfect paint', label: 'Luxury Vehicles', wide: true },
+  { src: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&q=80&fit=crop', alt: 'Premium leather car interior and dashboard', label: 'Interior Detail' },
+  { src: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80&fit=crop', alt: 'BMW front grille and headlights close-up', label: 'Headlight Restoration' },
+  { src: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80&fit=crop', alt: 'Silver Audi RS with flawless paint finish', label: 'Prestige Detail' },
+  { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&q=80&fit=crop', alt: 'Close-up of red car paint with deep gloss', label: 'Flawless Paint', wide: true },
 ]
 
-export const heroImage = 'https://images.unsplash.com/photo-1749394043423-9073b4e69803?w=1920&q=80&fit=crop'
+export const heroImage = 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920&q=80&fit=crop'
 export const ceramicBgImage = 'https://images.unsplash.com/photo-1565689876115-23f4019e888d?w=1920&q=80&fit=crop'
 export const polishingImage = 'https://images.pexels.com/photos/5233259/pexels-photo-5233259.jpeg?auto=compress&cs=tinysrgb&w=1260'
