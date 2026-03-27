@@ -43,7 +43,7 @@ export default function Hero() {
           playsInline
           poster={heroImage}
           className="absolute inset-0 h-full w-full object-cover"
-          style={{ filter: 'brightness(0.2) saturate(0.7)' }}
+          style={{ filter: 'brightness(0.45) saturate(0.85)' }}
         >
           <source
             src="/gallery/video-detailing.mp4"
@@ -59,12 +59,12 @@ export default function Hero() {
           priority
           sizes="100vw"
           quality={85}
-          style={{ filter: 'brightness(0.25)' }}
+          style={{ filter: 'brightness(0.45)' }}
         />
       </motion.div>
 
       {/* Dark gradient overlay */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/70 via-black/50 to-black" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/40 via-black/25 to-black/80" />
 
       {/* Vignette overlay */}
       <div
