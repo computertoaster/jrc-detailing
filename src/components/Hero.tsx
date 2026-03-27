@@ -46,7 +46,7 @@ export default function Hero() {
           style={{ filter: 'brightness(0.2) saturate(0.7)' }}
         >
           <source
-            src="https://videos.pexels.com/video-files/3945336/3945336-uhd_2560_1440_25fps.mp4"
+            src="/gallery/video-detailing.mp4"
             type="video/mp4"
           />
         </video>

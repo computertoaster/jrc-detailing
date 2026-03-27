@@ -9,6 +9,8 @@ export const CONTACT = {
   email: 'jesse@jrcdetailing.com.au',
   instagram: '@jrc.detailing_',
   instagramUrl: 'https://www.instagram.com/jrc.detailing_/',
+  googleReviewUrl: 'https://g.page/r/CZuK3_XFd-o_EAI/review',
+  googleMapsUrl: 'https://g.page/r/CZuK3_XFd-o_EAI',
 } as const
 
 export const OWNER = {

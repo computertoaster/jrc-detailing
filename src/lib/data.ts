@@ -129,18 +129,27 @@ export const areas: Area[] = [
 ]
 
 export const galleryImages: GalleryImage[] = [
-  { src: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200&q=80&fit=crop', alt: 'BMW M4 Competition in showroom finish', label: 'Showroom Finish', wide: true },
-  { src: 'https://images.unsplash.com/photo-1565689876115-23f4019e888d?w=800&q=80&fit=crop', alt: 'Water beading on ceramic coated paint', label: 'Ceramic Coating' },
-  { src: 'https://images.pexels.com/photos/5233259/pexels-photo-5233259.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Machine polishing a car panel', label: 'Paint Correction' },
-  { src: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3b?w=800&q=80&fit=crop', alt: 'Car covered in thick snow foam', label: 'Foam Wash' },
-  { src: 'https://images.pexels.com/photos/4876648/pexels-photo-4876648.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Car being detailed with foam cannon', label: 'Exterior Detail' },
-  { src: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=80&fit=crop', alt: 'Luxury car at night with perfect paint', label: 'Luxury Vehicles', wide: true },
-  { src: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&q=80&fit=crop', alt: 'Premium leather car interior and dashboard', label: 'Interior Detail' },
-  { src: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80&fit=crop', alt: 'BMW front grille and headlights close-up', label: 'Headlight Restoration' },
-  { src: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80&fit=crop', alt: 'Silver Audi RS with flawless paint finish', label: 'Prestige Detail' },
-  { src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&q=80&fit=crop', alt: 'Close-up of red car paint with deep gloss', label: 'Flawless Paint', wide: true },
+  { src: '/gallery/detail-03.jpg', alt: 'BMW M2 Competition front angle after full detail in showroom', label: 'BMW M2 Competition', wide: true },
+  { src: '/gallery/detail-02.jpg', alt: 'BMW M2 Competition rear badge and taillight with showroom finish', label: 'Prestige Finish' },
+  { src: '/gallery/detail-05.jpg', alt: 'Red BMW X2 with deep gloss paint after cut and polish', label: 'Cut & Polish' },
+  { src: '/gallery/detail-22.jpg', alt: 'Paint correction before and after on dark bonnet under inspection lights', label: 'Paint Correction', wide: true },
+  { src: '/gallery/detail-01.jpg', alt: 'Red Mazda CX-30 freshly detailed in Victoria Point driveway', label: 'Full Detail' },
+  { src: '/gallery/detail-13.jpg', alt: 'Jeep Grand Cherokee detailed at dealership showroom', label: 'Dealership Work' },
+  { src: '/gallery/detail-06.jpg', alt: 'Toyota HiLux carpet before and after interior detail by JRC Detailing', label: 'Interior Before & After', wide: true },
+  { src: '/gallery/detail-04.jpg', alt: 'BMW M2 Competition pristine leather interior after full interior detail', label: 'Interior Detail' },
+  { src: '/gallery/detail-15.jpg', alt: 'SUV covered in thick snow foam during mobile wash in Brisbane', label: 'Snow Foam Wash' },
+  { src: '/gallery/detail-18.jpg', alt: 'Subaru BRZ engine bay before and after detail by JRC Detailing', label: 'Engine Bay Detail', wide: true },
+  { src: '/gallery/detail-19.jpg', alt: 'Gold 5-spoke alloy wheel cleaned and dressed on restored car', label: 'Wheel Detail' },
+  { src: '/gallery/detail-20.jpg', alt: 'Red car with gold wheels detailed and photographed at night', label: 'Night Finish' },
+  { src: '/gallery/detail-26.jpg', alt: 'Headlight restoration before and after showing crystal clear result', label: 'Headlight Restoration' },
+  { src: '/gallery/detail-14.jpg', alt: 'Dark sedan front panel with mirror-like paint correction finish', label: 'Mirror Finish' },
+  { src: '/gallery/detail-08.jpg', alt: 'Toyota LandCruiser 79 Series fully detailed on grass in Brisbane', label: 'LandCruiser Detail' },
+  { src: '/gallery/detail-25.jpg', alt: 'Classic Toyota Celica detailed and restored in shed', label: 'Classic Car' },
+  { src: '/gallery/detail-23.jpg', alt: 'Rubber floor mat before and after deep clean by JRC Detailing', label: 'Floor Mat Clean' },
+  { src: '/gallery/detail-12.jpg', alt: 'Silver Holden Commodore SS side panel with deep gloss paint reflection', label: 'Paint Reflection' },
+  { src: '/gallery/detail-11.jpg', alt: 'Clean boot interior after full interior detail', label: 'Boot Detail' },
 ]
 
-export const heroImage = 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920&q=80&fit=crop'
-export const ceramicBgImage = 'https://images.unsplash.com/photo-1565689876115-23f4019e888d?w=1920&q=80&fit=crop'
-export const polishingImage = 'https://images.pexels.com/photos/5233259/pexels-photo-5233259.jpeg?auto=compress&cs=tinysrgb&w=1260'
+export const heroImage = '/gallery/detail-03.jpg'
+export const ceramicBgImage = '/gallery/detail-05.jpg'
+export const polishingImage = '/gallery/detail-12.jpg'

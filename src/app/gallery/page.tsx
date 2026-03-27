@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import GalleryContent from './GalleryContent'
 import JsonLd from '@/components/JsonLd'
-import { breadcrumbSchema } from '@/lib/seo'
+import { breadcrumbSchema, imageGallerySchema } from '@/lib/seo'
 import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -22,6 +22,7 @@ export default function GalleryPage() {
           { name: 'Gallery', url: `${SITE_URL}/gallery` },
         ])}
       />
+      <JsonLd data={imageGallerySchema()} />
       <GalleryContent />
     </>
   )

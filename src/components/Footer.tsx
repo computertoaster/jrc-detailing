@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { CONTACT, OWNER, SITE_NAME } from '@/lib/constants'
 
+const googleStars = '★★★★★'
+
 const footerLinks = [
   { href: '/services', label: 'Services' },
   { href: '/gallery', label: 'Gallery' },
@@ -70,6 +72,24 @@ export default function Footer() {
         <p className="text-center text-sm text-white/25 mb-10">
           {OWNER.location} &middot; Servicing Redlands, Bayside &amp; Brisbane South
         </p>
+
+        {/* Google Review CTA */}
+        <div className="mx-auto mb-10 text-center">
+          <a
+            href={CONTACT.googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 hover:border-yellow-500/30 hover:bg-yellow-500/5"
+          >
+            <span className="text-lg text-yellow-400">{googleStars}</span>
+            <span className="font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/50">
+              5.0 on Google
+            </span>
+            <span className="font-heading text-[0.6rem] font-semibold uppercase tracking-[1px] text-yellow-400/70">
+              Leave a Review
+            </span>
+          </a>
+        </div>
 
         {/* Divider */}
         <div className="mx-auto mb-8 h-px w-24 bg-white/6" />

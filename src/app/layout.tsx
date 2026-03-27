@@ -86,8 +86,9 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="preconnect" href="https://images.pexels.com" />
+        <link rel="author" href="https://jrcdetailing.com.au/about" />
+        <meta name="geo.position" content="-27.5837;153.1303" />
+        <meta name="ICBM" content="-27.5837, 153.1303" />
       </head>
       <body className="bg-black font-body text-white antialiased noise-overlay">
         <a href="#main-content" className="skip-to-content">

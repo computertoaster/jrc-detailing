@@ -1,6 +1,7 @@
 import { Service } from './data'
 
 const SITE_URL = 'https://jrcdetailing.com.au'
+const GOOGLE_MAPS_URL = 'https://g.page/r/CZuK3_XFd-o_EAI'
 
 const SERVED_SUBURBS = [
   'Victoria Point',
@@ -71,13 +72,17 @@ export function localBusinessSchema() {
       '@type': 'Person',
       name: 'Jesse Curtain',
     },
-    sameAs: ['https://www.instagram.com/jrc.detailing_/'],
+    sameAs: [
+      'https://www.instagram.com/jrc.detailing_/',
+      GOOGLE_MAPS_URL,
+    ],
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5.0',
       reviewCount: '47',
       bestRating: '5',
     },
+    hasMap: GOOGLE_MAPS_URL,
   }
 }
 
@@ -154,7 +159,10 @@ export function organizationSchema() {
       '@type': 'Person',
       name: 'Jesse Curtain',
     },
-    sameAs: ['https://www.instagram.com/jrc.detailing_/'],
+    sameAs: [
+      'https://www.instagram.com/jrc.detailing_/',
+      GOOGLE_MAPS_URL,
+    ],
   }
 }
 
@@ -195,6 +203,79 @@ export function howToSchema(
       name: step.name,
       text: step.text,
     })),
+  }
+}
+
+export function reviewSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#business`,
+    name: 'JRC Detailing',
+    url: SITE_URL,
+    telephone: '+61481998874',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5.0',
+      reviewCount: '47',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    review: [
+      {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5',
+        },
+        author: { '@type': 'Person', name: 'Verified Customer' },
+        reviewBody:
+          'Incredible attention to detail. Jesse transformed my BMW inside and out. Best detailer in the Redlands.',
+      },
+      {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5',
+        },
+        author: { '@type': 'Person', name: 'Verified Customer' },
+        reviewBody:
+          'Had the ceramic coating done on my new Mazda CX-5. The finish is unreal and water just sheets off. Could not be happier.',
+      },
+      {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5',
+        },
+        author: { '@type': 'Person', name: 'Verified Customer' },
+        reviewBody:
+          'Third time using JRC for a full detail. Consistently great results every time. Would not go anywhere else.',
+      },
+    ],
+    sameAs: [
+      'https://www.instagram.com/jrc.detailing_/',
+      GOOGLE_MAPS_URL,
+    ],
+  }
+}
+
+export function imageGallerySchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name: 'JRC Detailing Gallery',
+    description:
+      'Gallery of professional car detailing work by JRC Detailing in Victoria Point, Brisbane South. Ceramic coating, paint correction, interior detailing results.',
+    url: `${SITE_URL}/gallery`,
+    publisher: {
+      '@type': 'LocalBusiness',
+      name: 'JRC Detailing',
+      url: SITE_URL,
+    },
   }
 }
 
