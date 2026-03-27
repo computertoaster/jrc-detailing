@@ -5,9 +5,11 @@ import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
+import AnalyticsEvents from '@/components/AnalyticsEvents'
 import JsonLd from '@/components/JsonLd'
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, CONTACT } from '@/lib/constants'
 import { localBusinessSchema, organizationSchema, websiteSchema } from '@/lib/seo'
+import { GA_MEASUREMENT_ID } from '@/lib/gtag'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -98,6 +100,25 @@ export default function RootLayout({
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
 
+        {/* Google Analytics (GA4) */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_MEASUREMENT_ID}', {
+                send_page_view: true,
+                cookie_flags: 'SameSite=None;Secure'
+              });`}
+            </Script>
+          </>
+        )}
+
         {/* Meta Pixel */}
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <Script id="meta-pixel" strategy="afterInteractive">
@@ -125,6 +146,7 @@ export default function RootLayout({
           </Script>
         )}
 
+        <AnalyticsEvents />
         <Navigation />
         <main id="main-content">{children}</main>
         <Footer />

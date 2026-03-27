@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import { services } from '@/lib/data'
+import { trackFormSubmission } from '@/lib/gtag'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -38,6 +39,7 @@ export default function ContactForm() {
         throw new Error('Failed to send')
       }
 
+      trackFormSubmission('contact_form', formData.service)
       setSubmitted(true)
       setTimeout(() => {
         setSubmitted(false)

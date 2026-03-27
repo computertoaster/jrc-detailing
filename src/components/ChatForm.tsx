@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { services } from '@/lib/data'
+import { trackFormSubmission } from '@/lib/gtag'
 
 interface FormData {
   name: string
@@ -179,6 +180,7 @@ export default function ChatForm() {
 
       if (!res.ok) throw new Error('Failed to send')
 
+      trackFormSubmission('chat_form', formData.service)
       setSubmitted(true)
       setMessages((prev) => [
         ...prev,
