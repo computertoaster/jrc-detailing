@@ -9,7 +9,7 @@ import SectionDivider from '@/components/SectionDivider'
 import JsonLd from '@/components/JsonLd'
 import { services, addons, galleryImages, areas, polishingImage, ceramicBgImage } from '@/lib/data'
 import { CONTACT, OWNER, SITE_URL, SITE_NAME } from '@/lib/constants'
-import { breadcrumbSchema, serviceSchema, faqSchema, reviewSchema } from '@/lib/seo'
+import { breadcrumbSchema, serviceSchema, faqSchema } from '@/lib/seo'
 
 const homeFaqs = [
   {
@@ -46,7 +46,6 @@ export default function HomePage() {
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: SITE_URL }])} />
       <JsonLd data={faqSchema(homeFaqs)} />
-      <JsonLd data={reviewSchema()} />
       {topServices.map((service) => (
         <JsonLd key={service.slug} data={serviceSchema(service)} />
       ))}
@@ -305,90 +304,44 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <AnimatedSection className="mb-16 text-center">
             <p className="mb-4 font-heading text-[0.65rem] font-bold uppercase tracking-[4px] text-red">
-              Customer Reviews
+              Customer Feedback
             </p>
             <h2 className="mb-4 font-heading text-4xl font-extrabold md:text-5xl">
               What Our Customers Say
             </h2>
             <p className="mx-auto max-w-xl text-base text-gray">
-              Rated 5.0 stars on{' '}
+              Trusted by vehicle owners across{' '}
               <a
                 href={CONTACT.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover"
               >
-                Google
-              </a>{' '}
-              and{' '}
-              <a
-                href={CONTACT.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue underline underline-offset-2 transition-colors hover:text-blue-hover"
-              >
-                Instagram
+                Victoria Point, Redlands &amp; Brisbane South
               </a>.
             </p>
-          </AnimatedSection>
-
-          {/* Google Rating Summary */}
-          <AnimatedSection className="mb-12">
-            <a
-              href={CONTACT.googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mx-auto flex max-w-md items-center justify-center gap-4 rounded-xl border border-white/10 bg-white/5 px-8 py-5 transition-all duration-300 hover:border-yellow-500/30 hover:bg-yellow-500/5"
-            >
-              {/* Google G icon */}
-              <svg width="28" height="28" viewBox="0 0 24 24" className="flex-shrink-0">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl font-bold text-white">5.0</span>
-                  <span className="text-xl text-yellow-400">★★★★★</span>
-                </div>
-                <p className="text-xs text-white/40">47 reviews on Google</p>
-              </div>
-              <svg
-                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                className="ml-auto text-white/20 transition-all duration-300 group-hover:text-yellow-400 group-hover:translate-x-1"
-              >
-                <path d="M7 17l9.2-9.2M17 17V7H7" />
-              </svg>
-            </a>
           </AnimatedSection>
 
           <div className="grid gap-6 md:grid-cols-3">
             {[
               {
-                text: 'Incredible attention to detail. Jesse transformed my BMW inside and out. Best detailer in the Redlands.',
+                text: 'Jesse did an incredible job on my BMW. Interior and exterior came up better than when I bought it. Attention to detail is next level.',
                 stars: 5,
-                source: 'Google Review',
+                label: 'BMW Owner',
               },
               {
-                text: 'Had the ceramic coating done on my new Mazda CX-5. The finish is unreal and water just sheets off. Could not be happier.',
+                text: 'Had the ceramic coating done on my new car. The finish is unreal and water just beads straight off. Could not recommend JRC enough.',
                 stars: 5,
-                source: 'Google Review',
+                label: 'Ceramic Coating Client',
               },
               {
-                text: 'Third time using JRC for a full detail. Consistently great results every time. Would not go anywhere else.',
+                text: 'Third time using JRC for a full detail. Consistently great results every single time. Would not go anywhere else in Brisbane South.',
                 stars: 5,
-                source: 'Google Review',
+                label: 'Repeat Customer',
               },
             ].map((review, i) => (
               <AnimatedSection key={i} delay={i * 0.12}>
-                <a
-                  href={CONTACT.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block rounded-lg border border-white/6 bg-dark-2 p-8 transition-all duration-300 hover:border-blue/20 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue/5"
-                >
+                <div className="group rounded-lg border border-white/6 bg-dark-2 p-8 transition-all duration-300 hover:border-blue/20 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue/5">
                   {/* Stars */}
                   <div className="mb-4 flex gap-1">
                     {Array.from({ length: review.stars }).map((_, j) => (
@@ -399,18 +352,10 @@ export default function HomePage() {
                     &ldquo;{review.text}&rdquo;
                   </p>
                   <div className="h-px w-8 bg-red/30 mb-4" />
-                  <div className="flex items-center gap-2">
-                    <svg width="14" height="14" viewBox="0 0 24 24" className="flex-shrink-0">
-                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
-                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                    </svg>
-                    <p className="font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/30">
-                      {review.source}
-                    </p>
-                  </div>
-                </a>
+                  <p className="font-heading text-[0.65rem] font-semibold uppercase tracking-[2px] text-white/30">
+                    {review.label}
+                  </p>
+                </div>
               </AnimatedSection>
             ))}
           </div>

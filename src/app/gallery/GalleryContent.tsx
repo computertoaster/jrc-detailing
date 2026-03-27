@@ -242,13 +242,10 @@ export default function GalleryContent() {
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                   <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                 </svg>
-                <span className="text-lg text-yellow-400">★★★★★</span>
                 <span className="font-heading text-xs font-semibold uppercase tracking-[2px] text-white/50">
-                  5.0 on Google
+                  Review us on Google
                 </span>
-                <span className="font-heading text-[0.6rem] font-semibold uppercase tracking-[1px] text-yellow-400/70">
-                  Leave a Review
-                </span>
+                <span className="text-lg text-yellow-400">★★★★★</span>
               </a>
             </div>
             <h2 className="mb-4 font-heading text-2xl font-bold text-white md:text-3xl">

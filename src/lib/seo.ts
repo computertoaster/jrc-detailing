@@ -76,12 +76,6 @@ export function localBusinessSchema() {
       'https://www.instagram.com/jrc.detailing_/',
       GOOGLE_MAPS_URL,
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '47',
-      bestRating: '5',
-    },
     hasMap: GOOGLE_MAPS_URL,
   }
 }
@@ -206,62 +200,6 @@ export function howToSchema(
   }
 }
 
-export function reviewSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${SITE_URL}/#business`,
-    name: 'JRC Detailing',
-    url: SITE_URL,
-    telephone: '+61481998874',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '47',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    review: [
-      {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5',
-        },
-        author: { '@type': 'Person', name: 'Verified Customer' },
-        reviewBody:
-          'Incredible attention to detail. Jesse transformed my BMW inside and out. Best detailer in the Redlands.',
-      },
-      {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5',
-        },
-        author: { '@type': 'Person', name: 'Verified Customer' },
-        reviewBody:
-          'Had the ceramic coating done on my new Mazda CX-5. The finish is unreal and water just sheets off. Could not be happier.',
-      },
-      {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5',
-        },
-        author: { '@type': 'Person', name: 'Verified Customer' },
-        reviewBody:
-          'Third time using JRC for a full detail. Consistently great results every time. Would not go anywhere else.',
-      },
-    ],
-    sameAs: [
-      'https://www.instagram.com/jrc.detailing_/',
-      GOOGLE_MAPS_URL,
-    ],
-  }
-}
 
 export function imageGallerySchema() {
   return {
