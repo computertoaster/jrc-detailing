@@ -28,5 +28,6 @@ export const NAV_LINKS: readonly { href: string; label: string; cta?: boolean }[
   { href: '/ceramic-coating', label: 'Ceramic' },
   { href: '/about', label: 'About' },
   { href: '/areas', label: 'Areas' },
+  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Get a Quote', cta: true },
 ]
