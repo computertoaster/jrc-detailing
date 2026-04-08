@@ -25,11 +25,6 @@ const securityHeaders = [
     key: 'X-DNS-Prefetch-Control',
     value: 'on',
   },
-  // Site taken out of live visibility - noindex for all crawlers
-  {
-    key: 'X-Robots-Tag',
-    value: 'noindex, nofollow, noarchive, nosnippet, noimageindex',
-  },
 ]
 
 const nextConfig: NextConfig = {
